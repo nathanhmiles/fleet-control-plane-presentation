@@ -6,10 +6,10 @@ import { Dependency, Epic, Phase, Principle, Risk, Section, TechItem } from '../
 export class ContentService {
   getSections(): Observable<Section[]> {
     return of([
-      { id: 'epics', label: '01 — Features & Epics' },
-      { id: 'tech', label: '02 — Technical Design' },
-      { id: 'delivery', label: '03 — Delivery Plan' },
-      { id: 'risks', label: '04 — Risks' },
+      { id: 'epics', label: 'Features & Epics' },
+      { id: 'tech', label: 'Technical Design' },
+      { id: 'delivery', label: 'Delivery Plan' },
+      { id: 'risks', label: 'Risks' },
     ]);
   }
 
