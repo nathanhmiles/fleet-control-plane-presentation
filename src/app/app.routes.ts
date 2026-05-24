@@ -4,7 +4,7 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./pages/fleet-ops/sections-container-page.component').then(
+      import('./pages/sections-container/sections-container-page.component').then(
         (m) => m.SectionsContainerPageComponent
       ),
     children: [
