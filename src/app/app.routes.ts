@@ -29,9 +29,13 @@ export const routes: Routes = [
             (m) => m.DeliveryPlanPageComponent
           )
       },
-      // {
-      //   path: 'risks'
-      // }
+      {
+        path: 'risks',
+        loadComponent: () =>
+          import('./pages/risks/risks-page.component').then(
+            (m) => m.RisksPageComponent
+          )
+      },
       {
         path: '**',
         redirectTo: 'epics'

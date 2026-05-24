@@ -9,23 +9,11 @@
     @for (s of SECTIONS(); track s.id) {
       <app-section-button
         [section]="s"
-        [isActive]="active === s.id"
+        [isActive]="activeRoute() === s.id"
         (selected)="handleSelectSection($event)">
       </app-section-button>
     }
   </div>
 
   <router-outlet></router-outlet>
-
-  @if (active === 'risks') {
-    <div>
-      <p class="text-muted mb-4">Eight risks across technical, product, and team dimensions. All high-severity risks have mitigations that start in week one.</p>
-
-      <div class="flex-col gap-2">
-        @for (r of RISKS(); track r.risk) {
-          <app-risk-card [risk]="r"></app-risk-card>
-        }
-      </div>
-    </div>
-  }
 </div>
