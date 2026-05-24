@@ -1,0 +1,13 @@
+<div class="card p-3">
+  <div class="flex items-center gap-2 mb-2">
+    <span class="badge" [style.background]="risk().color + '1A'" [style.color]="risk().color" [style.border-color]="risk().color">{{ risk().severity }}</span>
+    <span class="badge text-muted border-muted">{{ risk().category }}</span>
+    <strong class="flex-1">{{ risk().risk }}</strong>
+  </div>
+  <p class="text-sm mb-2">{{ risk().detail }}</p>
+  <div class="box muted-box text-sm flex gap-2">
+    <span style="color: #10b981;">↳</span>
+    <span><strong>Mitigation:</strong> {{ risk().mitigation }}</span>
+  </div>
+</div>
+

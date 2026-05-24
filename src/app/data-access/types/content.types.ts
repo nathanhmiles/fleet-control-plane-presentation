@@ -1,0 +1,49 @@
+export type Epic = {
+  id: string;
+  title: string;
+  color: string;
+  accent: string;
+  stories: string[];
+  assumption: string;
+};
+
+export interface Risk {
+  risk: string;
+  detail: string;
+  severity: string;
+  category: string;
+  color: string;
+  mitigation: string;
+}
+
+export interface TechItem {
+  icon: string;
+  title: string;
+  decision: string;
+  rationale: string;
+  alt: string;
+}
+
+export interface Phase {
+  phase: string;
+  title: string;
+  weeks: string;
+  why: string;
+  color: string;
+  items: string[];
+}
+
+export interface Principle {
+  title: string;
+  desc: string;
+}
+
+export interface Section {
+  id: string;
+  label: string;
+}
+
+export interface Dependency {
+  label: string;
+  role: string;
+}

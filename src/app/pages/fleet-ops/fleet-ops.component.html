@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="mb-4">
+    <div class="font-mono text-sm text-muted mb-1">FLEET OPS — FRONTEND DESIGN BRIEF</div>
+    <h1 class="mb-1">Edge Device Management Platform</h1>
+    <p class="text-muted mt-0">Senior frontend design (Angular): features, technical architecture, delivery plan, and risk register</p>
+  </div>
+
+  <div class="flex gap-2 tab-container">
+    @for (s of SECTIONS(); track s.id) {
+      <app-section-button
+        [section]="s"
+        [isActive]="active === s.id"
+        (selected)="active = $event">
+      </app-section-button>
+    }
+  </div>
+
+  @if (active === 'epics') {
+    <div>
+      <p class="text-muted mb-4">Six epics cover the full problem space. Each maps directly to a user-facing capability. Foundation is explicitly scoped — it has no user-visible feature, but it's the prerequisite for everything else.</p>
+
+      <div class="flex-col gap-2">
+        @for (epic of EPICS(); track epic.id) {
+          <app-epic-card
+            [epic]="epic"
+            [isOpen]="openEpic === epic.id"
+            (toggled)="toggleEpic($event)">
+          </app-epic-card>
+        }
+      </div>
+    </div>
+  }
+
+  @if (active === 'tech') {
+    <div>
+      <p class="text-muted mb-4">Every decision below has a rationale and an explicit account of alternatives considered and rejected. The goal is a frontend that earns operator trust.</p>
+
+      <div class="flex-col gap-2">
+        @for (item of TECH_SECTIONS(); track item.title; let i = $index) {
+          <app-tech-section
+            [item]="item"
+            [isOpen]="openTech === i"
+            (toggled)="toggleTech(i)">
+          </app-tech-section>
+        }
+      </div>
+
+      <div class="box border-box mt-4">
+        <h3 class="text-sm text-muted uppercase mt-0 mb-2">Key dependency map</h3>
+        <div class="grid">
+          @for (d of DEPENDENCIES(); track d.label) {
+            <div class="box border-box small-pad text-sm">
+              <div class="font-bold font-mono">{{ d.label }}</div>
+              <div class="text-muted">{{ d.role }}</div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (active === 'delivery') {
+    <div>
+      <p class="text-muted mb-4">Four phases over fourteen weeks. Phase 1 ends with something you can demo to a real operator.</p>
+
+      <div class="flex gap-2 wrap mb-4">
+        @for (p of PHASES(); track p.phase; let i = $index) {
+          <button
+            class="btn border-box font-bold"
+            (click)="setDelivery(i)"
+            [style.border-color]="openDelivery === i ? p.color : '#ccc'"
+            [style.background]="openDelivery === i ? p.color + '1A' : 'transparent'"
+            [style.color]="openDelivery === i ? p.color : 'inherit'">
+            {{ p.phase }}
+          </button>
+        }
+      </div>
+
+      @for (p of PHASES(); track p.phase; let i = $index) {
+        @if (openDelivery === i) {
+          <app-delivery-phase [phase]="p"></app-delivery-phase>
+        }
+      }
+
+      <div class="box border-box mt-4">
+        <h3 class="text-sm text-muted uppercase mt-0 mb-2">Sequencing principles</h3>
+        <ul class="no-bullets pl-0 text-sm flex-col gap-2">
+          @for (principle of PRINCIPLES(); track principle.title) {
+            <app-principle-item [principle]="principle"></app-principle-item>
+          }
+        </ul>
+      </div>
+    </div>
+  }
+
+  @if (active === 'risks') {
+    <div>
+      <p class="text-muted mb-4">Eight risks across technical, product, and team dimensions. All high-severity risks have mitigations that start in week one.</p>
+
+      <div class="flex-col gap-2">
+        @for (r of RISKS(); track r.risk) {
+          <app-risk-card [risk]="r"></app-risk-card>
+        }
+      </div>
+    </div>
+  }
+</div>

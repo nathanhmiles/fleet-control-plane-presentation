@@ -1,0 +1,20 @@
+<div class="card">
+  <button class="card-header flex items-center gap-2" (click)="onToggle()">
+    <span class="text-lg">{{ item().icon }}</span>
+    <div class="flex-col flex-1">
+      <span class="text-sm text-muted uppercase">{{ item().title }}</span>
+      <span class="font-bold font-mono">{{ item().decision }}</span>
+    </div>
+    <span>{{ isOpen() ? '▼' : '▶' }}</span>
+  </button>
+
+  @if (isOpen()) {
+    <div class="card-body">
+      <p>{{ item().rationale }}</p>
+      <div class="box muted-box text-sm">
+        <strong>Alternatives rejected:</strong> {{ item().alt }}
+      </div>
+    </div>
+  }
+</div>
+
