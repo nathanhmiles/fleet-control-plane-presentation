@@ -17,34 +17,6 @@
 
   <router-outlet></router-outlet>
 
-  @if (active === 'tech') {
-    <div>
-      <p class="text-muted mb-4">Every decision below has a rationale and an explicit account of alternatives considered and rejected. The goal is a frontend that earns operator trust.</p>
-
-      <div class="flex-col gap-2">
-        @for (item of TECH_SECTIONS(); track item.title; let i = $index) {
-          <app-tech-section
-            [item]="item"
-            [isOpen]="openTech === i"
-            (toggled)="toggleTech(i)">
-          </app-tech-section>
-        }
-      </div>
-
-      <div class="box border-box mt-4">
-        <h3 class="text-sm text-muted uppercase mt-0 mb-2">Key dependency map</h3>
-        <div class="grid">
-          @for (d of DEPENDENCIES(); track d.label) {
-            <div class="box border-box small-pad text-sm">
-              <div class="font-bold font-mono">{{ d.label }}</div>
-              <div class="text-muted">{{ d.role }}</div>
-            </div>
-          }
-        </div>
-      </div>
-    </div>
-  }
-
   @if (active === 'delivery') {
     <div>
       <p class="text-muted mb-4">Four phases over fourteen weeks. Phase 1 ends with something you can demo to a real operator.</p>

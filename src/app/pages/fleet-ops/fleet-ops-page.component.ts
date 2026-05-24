@@ -13,7 +13,6 @@ import { Router, RouterOutlet } from '@angular/router';
   selector: 'app-fleet-ops',
   imports: [
     SectionButtonComponent,
-    TechSectionCardComponent,
     DeliveryPhaseComponent,
     PrincipleItemComponent,
     RiskCardComponent,
@@ -24,15 +23,12 @@ import { Router, RouterOutlet } from '@angular/router';
 })
 export class FleetOpsPageComponent {
   active = 'epics';
-  openTech: number | null = null;
   openDelivery: number = 0;
 
   private readonly _contentService = inject(ContentService);
   private readonly _router = inject(Router);
 
-  toggleTech(index: number) {
-    this.openTech = this.openTech === index ? null : index;
-  }
+
   setDelivery(index: number) {
     this.openDelivery = index;
   }
@@ -43,9 +39,6 @@ export class FleetOpsPageComponent {
 
   readonly SECTIONS = toSignal(this._contentService.getSections());
 
-  readonly TECH_SECTIONS = toSignal(this._contentService.getTechSections());
-
-  readonly DEPENDENCIES = toSignal(this._contentService.getDependencies());
 
   readonly PHASES = toSignal(this._contentService.getPhases());
 

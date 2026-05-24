@@ -15,9 +15,13 @@ export const routes: Routes = [
             (m) => m.FeaturesEpicsPageComponent
           )
       },
-      // {
-      //   path: 'technical-design'
-      // },
+      {
+        path: 'tech',
+        loadComponent: () =>
+          import('./pages/technical-design/technical-design-page.component').then(
+            (m) => m.TechnicalDesignPageComponent
+          )
+      },
       // {
       //   path: 'delivery-plan'
       // },
