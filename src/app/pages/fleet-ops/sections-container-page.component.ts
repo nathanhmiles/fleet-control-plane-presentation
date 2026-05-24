@@ -24,7 +24,6 @@ export class SectionsContainerPageComponent {
           .map((s) => s.path)
           .join('/') ?? ''
       ),
-      tap(console.log)
     ),
     { initialValue: '' }
   );
