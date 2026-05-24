@@ -4,8 +4,8 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./pages/fleet-ops/fleet-ops-page.component').then(
-        (m) => m.FleetOpsPageComponent
+      import('./pages/fleet-ops/sections-container-page.component').then(
+        (m) => m.SectionsContainerPageComponent
       ),
     children: [
       {

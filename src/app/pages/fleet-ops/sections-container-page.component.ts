@@ -6,12 +6,12 @@ import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/ro
 import { filter, map, startWith, tap } from 'rxjs';
 
 @Component({
-  selector: 'app-fleet-ops',
+  selector: 'app-sections-container',
   imports: [SectionButtonComponent, RouterOutlet],
-  templateUrl: 'fleet-ops-page.component.html',
+  templateUrl: 'sections-container-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FleetOpsPageComponent {
+export class SectionsContainerPageComponent {
   private readonly _contentService = inject(ContentService);
   private readonly _router = inject(Router);
   private readonly _activatedRoute = inject(ActivatedRoute);
