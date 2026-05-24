@@ -22,9 +22,13 @@ export const routes: Routes = [
             (m) => m.TechnicalDesignPageComponent
           )
       },
-      // {
-      //   path: 'delivery-plan'
-      // },
+      {
+        path: 'delivery',
+        loadComponent: () =>
+          import('./pages/delivery-plan/delivery-plan-page.component').then(
+            (m) => m.DeliveryPlanPageComponent
+          )
+      },
       // {
       //   path: 'risks'
       // }

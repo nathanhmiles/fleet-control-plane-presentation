@@ -13,8 +13,6 @@ import { Router, RouterOutlet } from '@angular/router';
   selector: 'app-fleet-ops',
   imports: [
     SectionButtonComponent,
-    DeliveryPhaseComponent,
-    PrincipleItemComponent,
     RiskCardComponent,
     RouterOutlet
   ],
@@ -23,26 +21,17 @@ import { Router, RouterOutlet } from '@angular/router';
 })
 export class FleetOpsPageComponent {
   active = 'epics';
-  openDelivery: number = 0;
 
   private readonly _contentService = inject(ContentService);
   private readonly _router = inject(Router);
 
 
-  setDelivery(index: number) {
-    this.openDelivery = index;
-  }
 
   handleSelectSection(sectionId: string) {
     this._router.navigate(['/', sectionId])
   }
 
   readonly SECTIONS = toSignal(this._contentService.getSections());
-
-
-  readonly PHASES = toSignal(this._contentService.getPhases());
-
-  readonly PRINCIPLES = toSignal(this._contentService.getPrinciples());
 
   readonly RISKS = toSignal(this._contentService.getRisks());
 }
