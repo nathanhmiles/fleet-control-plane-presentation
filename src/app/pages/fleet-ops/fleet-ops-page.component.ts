@@ -7,31 +7,29 @@ import { TechSectionCardComponent } from '../../components/tech-section/tech-sec
 import { DeliveryPhaseComponent } from '../../components/delivery-phase/delivery-phase.component';
 import { PrincipleItemComponent } from '../../components/principle-item/principle-item.component';
 import { RiskCardComponent } from '../../components/risk-card/risk-card.component';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-fleet-ops',
   imports: [
     SectionButtonComponent,
-    EpicCardComponent,
     TechSectionCardComponent,
     DeliveryPhaseComponent,
     PrincipleItemComponent,
-    RiskCardComponent
+    RiskCardComponent,
+    RouterOutlet
   ],
-  templateUrl: 'fleet-ops.component.html',
+  templateUrl: 'fleet-ops-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FleetOpsComponent {
+export class FleetOpsPageComponent {
   active = 'epics';
-  openEpic: string | null = null;
   openTech: number | null = null;
   openDelivery: number = 0;
 
   private readonly _contentService = inject(ContentService);
+  private readonly _router = inject(Router);
 
-  toggleEpic(id: string) {
-    this.openEpic = this.openEpic === id ? null : id;
-  }
   toggleTech(index: number) {
     this.openTech = this.openTech === index ? null : index;
   }
@@ -39,9 +37,11 @@ export class FleetOpsComponent {
     this.openDelivery = index;
   }
 
-  readonly SECTIONS = toSignal(this._contentService.getSections());
+  handleSelectSection(sectionId: string) {
+    this._router.navigate(['/', sectionId])
+  }
 
-  readonly EPICS = toSignal(this._contentService.getEpics());
+  readonly SECTIONS = toSignal(this._contentService.getSections());
 
   readonly TECH_SECTIONS = toSignal(this._contentService.getTechSections());
 

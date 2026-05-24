@@ -10,26 +10,12 @@
       <app-section-button
         [section]="s"
         [isActive]="active === s.id"
-        (selected)="active = $event">
+        (selected)="handleSelectSection($event)">
       </app-section-button>
     }
   </div>
 
-  @if (active === 'epics') {
-    <div>
-      <p class="text-muted mb-4">Six epics cover the full problem space. Each maps directly to a user-facing capability. Foundation is explicitly scoped — it has no user-visible feature, but it's the prerequisite for everything else.</p>
-
-      <div class="flex-col gap-2">
-        @for (epic of EPICS(); track epic.id) {
-          <app-epic-card
-            [epic]="epic"
-            [isOpen]="openEpic === epic.id"
-            (toggled)="toggleEpic($event)">
-          </app-epic-card>
-        }
-      </div>
-    </div>
-  }
+  <router-outlet></router-outlet>
 
   @if (active === 'tech') {
     <div>
