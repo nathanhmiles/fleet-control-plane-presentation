@@ -3,7 +3,6 @@ import { DeliveryPhaseComponent } from '../../components/delivery-phase/delivery
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ContentService } from '../../data-access/services/content.service';
 
-
 @Component({
   selector: 'app-delivery-plan',
   imports: [DeliveryPhaseComponent],

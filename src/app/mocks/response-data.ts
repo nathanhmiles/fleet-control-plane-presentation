@@ -149,7 +149,7 @@ export const dependencies: Dependency[] = [
 
 export const phases: Phase[] = [
   {
-    phase: 'Phase 0',
+    phase: 0,
     title: 'Foundation',
     weeks: 'Weeks 1–2',
     why: 'Unblock everything — no demo is possible without this',
@@ -163,7 +163,7 @@ export const phases: Phase[] = [
     ],
   },
   {
-    phase: 'Phase 1',
+    phase: 1,
     title: 'Demo of core functionality',
     weeks: 'Weeks 3–5',
     why: 'Something real to show stakeholders',
@@ -177,7 +177,7 @@ export const phases: Phase[] = [
     ],
   },
   {
-    phase: 'Phase 2',
+    phase: 2,
     title: 'Real-time Core',
     weeks: 'Weeks 6–8',
     why: "This is the product's hardest capability - ship it on top of Material so UI risk and real-time risk don't land at the same time",
@@ -189,7 +189,7 @@ export const phases: Phase[] = [
     ],
   },
   {
-    phase: 'Phase 3',
+    phase: 3,
     title: 'Safety & Compliance',
     weeks: 'Weeks 9–11',
     why: 'Trust-building features',
@@ -201,7 +201,7 @@ export const phases: Phase[] = [
     ],
   },
   {
-    phase: 'Phase 4',
+    phase: 4,
     title: 'Scale & Polish',
     weeks: 'Weeks 12–14',
     why: 'Optimise performance and eliminate framework runtime overhead',

@@ -20,7 +20,7 @@ export interface TechItem {
 }
 
 export interface Phase {
-  phase: string;
+  phase: number;
   title: string;
   weeks: string;
   why: string;
