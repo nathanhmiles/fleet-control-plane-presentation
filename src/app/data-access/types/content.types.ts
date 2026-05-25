@@ -28,7 +28,6 @@ export interface Sprint {
   title: string;
   weeks: string;
   why: string;
-  color: string;
   items: string[];
 }
 

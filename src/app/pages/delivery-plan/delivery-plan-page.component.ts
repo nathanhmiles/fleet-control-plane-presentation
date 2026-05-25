@@ -27,11 +27,9 @@ import { ContentService } from '../../data-access/services/content.service';
       <div class="flex gap-2 wrap mb-4">
         @for (p of SPRINTS(); track p.sprint; let i = $index) {
           <button
-            class="btn border-box font-bold"
+            class="btn border-box font-bold sprint-{{ i }}"
             (click)="setDelivery(i)"
-            [style.border-color]="openDelivery === i ? p.color : '#ccc'"
-            [style.background]="openDelivery === i ? p.color + '1A' : 'transparent'"
-            [style.color]="openDelivery === i ? p.color : 'inherit'"
+            [class.active]="openDelivery === i"
           >
             {{ p.sprint }}
           </button>
@@ -45,6 +43,33 @@ import { ContentService } from '../../data-access/services/content.service';
       }
     </div>
   `,
+  styles: [`
+    .sprint-0.active {
+      border-color: #6b7280;
+      background: #6b72801A;
+      color: #6b7280;
+    }
+    .sprint-1.active {
+      border-color: #3b82f6;
+      background: #3b82f61A;
+      color: #3b82f6;
+    }
+    .sprint-2.active {
+      border-color: #10b981;
+      background: #10b9811A;
+      color: #10b981;
+    }
+    .sprint-3.active {
+      border-color: #f59e0b;
+      background: #f59e0b1A;
+      color: #f59e0b;
+    }
+    .sprint-4.active {
+      border-color: #8b5cf6;
+      background: #8b5cf61A;
+      color: #8b5cf6;
+    }
+  `]
 })
 export class DeliveryPlanPageComponent {
   openDelivery: number = 0;

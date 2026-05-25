@@ -174,7 +174,6 @@ export const sprints: Sprint[] = [
     sprint: 'Sprint 0',
     title: 'Foundation',
     weeks: 'Weeks 1–2',
-    color: '#6b7280',
     why: 'Unblock everything — no demo is possible without this',
     items: [
       'Angular CLI scaffold: standalone components, TypeScript configuration, strict mode',
@@ -189,7 +188,6 @@ export const sprints: Sprint[] = [
     sprint: 'Sprint 1',
     title: 'Demo of core functionality',
     weeks: 'Weeks 3–5',
-    color: '#3b82f6',
     why: 'Something real to show stakeholders',
     items: [
       'Design review and global Material density configuration: override component paddings and layouts to force a high-density, utility-first style matching operator expectations',
@@ -204,7 +202,6 @@ export const sprints: Sprint[] = [
     sprint: 'Sprint 2',
     title: 'Real-time Core',
     weeks: 'Weeks 6–8',
-    color: '#10b981',
     why: "This is the product's hardest capability - ship it on top of Material so UI risk and real-time risk don't land at the same time",
     items: [
       'WebSocketService in core/ using RxJS webSocket()',
@@ -217,7 +214,6 @@ export const sprints: Sprint[] = [
     sprint: 'Sprint 3',
     title: 'Safety & Compliance',
     weeks: 'Weeks 9–11',
-    color: '#f59e0b',
     why: 'Trust-building features',
     items: [
       'Pre-flight compatibility check panel',
@@ -230,7 +226,6 @@ export const sprints: Sprint[] = [
     sprint: 'Sprint 4',
     title: 'Scale & Polish',
     weeks: 'Weeks 12–14',
-    color: '#8b5cf6',
     why: 'Optimise performance and eliminate framework runtime overhead',
     items: [
       'Drop Zone.js dependency entirely and transition application configuration to native Zoneless change detection, leveraging the Signal codebase built from Sprint 0',
