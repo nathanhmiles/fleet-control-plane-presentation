@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { DeliverySprintComponent } from '../../components/delivery-sprint/delivery-sprint.component';
+import { DeliveryPhaseComponent } from '../../components/delivery-phase/delivery-phase.component';
 import { PrincipleItemComponent } from '../../components/principle-item/principle-item.component';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ContentService } from '../../data-access/services/content.service';
@@ -7,11 +7,11 @@ import { ContentService } from '../../data-access/services/content.service';
 
 @Component({
   selector: 'app-delivery-plan',
-  imports: [DeliverySprintComponent, PrincipleItemComponent],
+  imports: [DeliveryPhaseComponent, PrincipleItemComponent],
   template: `
     <div>
       <p class="text-muted mb-4">
-        Five sprints over fourteen weeks. Sprint 1 ends with something you can demo to a real
+        Five phases over fourteen weeks. Phase 1 ends with something you can demo to a real
         operator.
       </p>
 
@@ -25,46 +25,46 @@ import { ContentService } from '../../data-access/services/content.service';
       </div>
 
       <div class="flex gap-2 wrap mb-4">
-        @for (p of SPRINTS(); track p.sprint; let i = $index) {
+        @for (p of PHASES(); track p.phase; let i = $index) {
           <button
-            class="btn border-box font-bold sprint-{{ i }}"
+            class="btn border-box font-bold phase-{{ i }}"
             (click)="setDelivery(i)"
             [class.active]="openDelivery === i"
           >
-            {{ p.sprint }}
+            {{ p.phase }}
           </button>
         }
       </div>
 
-      @for (p of SPRINTS(); track p.sprint; let i = $index) {
+      @for (p of PHASES(); track p.phase; let i = $index) {
         @if (openDelivery === i) {
-          <app-delivery-sprint [sprint]="p"></app-delivery-sprint>
+          <app-delivery-phase [phase]="p"></app-delivery-phase>
         }
       }
     </div>
   `,
   styles: [`
-    .sprint-0.active {
+    .phase-0.active {
       border-color: #6b7280;
       background: #6b72801A;
       color: #6b7280;
     }
-    .sprint-1.active {
+    .phase-1.active {
       border-color: #3b82f6;
       background: #3b82f61A;
       color: #3b82f6;
     }
-    .sprint-2.active {
+    .phase-2.active {
       border-color: #10b981;
       background: #10b9811A;
       color: #10b981;
     }
-    .sprint-3.active {
+    .phase-3.active {
       border-color: #f59e0b;
       background: #f59e0b1A;
       color: #f59e0b;
     }
-    .sprint-4.active {
+    .phase-4.active {
       border-color: #8b5cf6;
       background: #8b5cf61A;
       color: #8b5cf6;
@@ -76,7 +76,7 @@ export class DeliveryPlanPageComponent {
 
   private readonly _contentService = inject(ContentService);
 
-  readonly SPRINTS = toSignal(this._contentService.getSprints());
+  readonly PHASES = toSignal(this._contentService.getPhases());
 
   readonly PRINCIPLES = toSignal(this._contentService.getPrinciples());
 

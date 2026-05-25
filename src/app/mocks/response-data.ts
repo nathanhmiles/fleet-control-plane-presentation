@@ -1,7 +1,7 @@
 import {
   Dependency,
   Epic,
-  Sprint,
+  Phase,
   Principle,
   Risk,
   Section,
@@ -101,7 +101,7 @@ export const techSections: TechItem[] = [
   {
     title: 'State & data handling',
     decision:
-      'Reactive state via Angular Signals + NgRx Signal Store for server state. Allow limited zone-based change detection initially, removed in final sprint',
+      'Reactive state via Angular Signals + NgRx Signal Store for server state. Allow limited zone-based change detection initially, removed in final phase',
     rationale:
       'Angular Signals replace Zone.js for granular, synchronous reactivity in component state. Server state belongs in NgRx Signal Store',
     alt: 'Traditional zone-based change detection throughout, NgRx Redux-like store, plain BehaviorSubject services',
@@ -148,9 +148,9 @@ export const dependencies: Dependency[] = [
   { label: 'Playwright', role: 'E2E tests' },
 ];
 
-export const sprints: Sprint[] = [
+export const phases: Phase[] = [
   {
-    sprint: 'Sprint 0',
+    phase: 'Phase 0',
     title: 'Foundation',
     weeks: 'Weeks 1–2',
     why: 'Unblock everything — no demo is possible without this',
@@ -164,7 +164,7 @@ export const sprints: Sprint[] = [
     ],
   },
   {
-    sprint: 'Sprint 1',
+    phase: 'Phase 1',
     title: 'Demo of core functionality',
     weeks: 'Weeks 3–5',
     why: 'Something real to show stakeholders',
@@ -178,7 +178,7 @@ export const sprints: Sprint[] = [
     ],
   },
   {
-    sprint: 'Sprint 2',
+    phase: 'Phase 2',
     title: 'Real-time Core',
     weeks: 'Weeks 6–8',
     why: "This is the product's hardest capability - ship it on top of Material so UI risk and real-time risk don't land at the same time",
@@ -190,7 +190,7 @@ export const sprints: Sprint[] = [
     ],
   },
   {
-    sprint: 'Sprint 3',
+    phase: 'Phase 3',
     title: 'Safety & Compliance',
     weeks: 'Weeks 9–11',
     why: 'Trust-building features',
@@ -202,12 +202,12 @@ export const sprints: Sprint[] = [
     ],
   },
   {
-    sprint: 'Sprint 4',
+    phase: 'Phase 4',
     title: 'Scale & Polish',
     weeks: 'Weeks 12–14',
     why: 'Optimise performance and eliminate framework runtime overhead',
     items: [
-      'Drop Zone.js dependency entirely and transition application configuration to native Zoneless change detection, leveraging the Signal codebase built from Sprint 0',
+      'Drop Zone.js dependency entirely and transition application configuration to native Zoneless change detection, leveraging the Signal codebase built from Phase 0',
       'Performance: profile and benchmark UI responsiveness with simulated 10k-target active streaming datasets',
       'Keyboard shortcuts and command palette for rapid, mouse-free operator workflows',
       'Accessibility audit and full keyboard navigation compliance fixes',
@@ -217,11 +217,11 @@ export const sprints: Sprint[] = [
 
 export const principles: Principle[] = [
   { title: 'MSW first', desc: 'Write mock handlers before any component.' },
-  { title: 'Demo early', desc: 'Sprint 1 produces something a real user can click.' },
-  { title: 'Hard problems first', desc: 'Real-time is in sprint 2, not sprint 4.' },
+  { title: 'Demo early', desc: 'Phase 1 produces something a real user can click.' },
+  { title: 'Hard problems first', desc: 'Real-time is in phase 2, not phase 4.' },
   {
-    title: 'Polish is a sprint',
-    desc: 'Accessibility and performance are explicitly scoped in sprint 4.',
+    title: 'Polish is a phase',
+    desc: 'Accessibility and performance are explicitly scoped in phase 4.',
   },
 ];
 
@@ -234,7 +234,7 @@ export const risks: Risk[] = [
     detail:
       'A dropped connection mid-deployment creates operator anxiety and risk of missed critical events.',
     mitigation:
-      'Build reconnect and /sync paths in sprint 2. Write chaos tests that kill the socket mid-deployment.',
+      'Build reconnect and /sync paths in phase 2. Write chaos tests that kill the socket mid-deployment.',
   },
   {
     severity: 'High',

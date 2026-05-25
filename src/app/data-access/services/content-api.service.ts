@@ -1,11 +1,11 @@
 import { inject, Injectable, isDevMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Dependency, Epic, Sprint, Principle, Risk, Section, TechItem } from '../types/content.types';
+import { Dependency, Epic, Phase, Principle, Risk, Section, TechItem } from '../types/content.types';
 import { Observable, of } from 'rxjs';
 import {
   dependencies,
   epics,
-  sprints,
+  phases,
   principles,
   risks,
   sections,
@@ -32,8 +32,8 @@ export class ContentApiService {
     return isDevMode() ? this._http.get<Dependency[]>('/api/dependencies') : of(dependencies);
   }
 
-  getSprints(): Observable<Sprint[]> {
-    return isDevMode() ? this._http.get<Sprint[]>('/api/sprints') : of(sprints);
+  getPhases(): Observable<Phase[]> {
+    return isDevMode() ? this._http.get<Phase[]>('/api/phases') : of(phases);
   }
 
   getPrinciples(): Observable<Principle[]> {
