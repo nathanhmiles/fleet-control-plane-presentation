@@ -11,7 +11,7 @@ import { ContentService } from '../../data-access/services/content.service';
     <div>
       <p class="text-muted mb-4">
         Every decision below has a rationale and an explicit account of alternatives considered and
-        rejected. The goal is a frontend that earns operator trust.
+        rejected. The goal is a clear, concise, performant and accessible frontend application that earns operator trust.
       </p>
 
       <div class="box border-box mb-4">

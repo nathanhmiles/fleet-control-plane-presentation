@@ -10,9 +10,9 @@ import { ContentService } from '../../data-access/services/content.service';
   template: `
     <div>
       <p class="text-muted mb-4">
-        Six epics cover the full problem space. Each maps directly to a user-facing capability.
-        Foundation is explicitly scoped — it has no user-visible feature, but it's the prerequisite
-        for everything else.
+        {{ EPICS().length }} epics covering the full project scope, mapping directly to user-facing capability.
+        Foundation is explicitly scoped, while it has no user-visible feature it is the prerequisite
+        for delivering the first vertical slice to the user.
       </p>
 
       <div class="flex-col gap-2">
@@ -34,7 +34,7 @@ export class FeaturesEpicsPageComponent {
 
   private readonly _contentService = inject(ContentService);
 
-  readonly EPICS = toSignal(this._contentService.getEpics());
+  readonly EPICS = toSignal(this._contentService.getEpics(), { initialValue: []});
 
   toggleEpic(id: string) {
     this.openEpic = this.openEpic === id ? null : id;

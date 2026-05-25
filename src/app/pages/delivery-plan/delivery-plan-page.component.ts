@@ -10,7 +10,7 @@ import { ContentService } from '../../data-access/services/content.service';
   template: `
     <div>
       <p class="text-muted mb-4">
-        Five phases over fourteen weeks. Phase 1 ends with something you can demo to a real
+        {{ PHASES().length }} phases over fourteen weeks. Phase 1 ends with something you can demo to a real
         operator.
       </p>
 
@@ -66,7 +66,7 @@ export class DeliveryPlanPageComponent {
 
   private readonly _contentService = inject(ContentService);
 
-  readonly PHASES = toSignal(this._contentService.getPhases());
+  readonly PHASES = toSignal(this._contentService.getPhases(), { initialValue: []});
 
   setDelivery(index: number) {
     this.openDelivery = index;
