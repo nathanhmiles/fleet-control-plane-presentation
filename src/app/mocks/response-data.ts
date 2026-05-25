@@ -92,14 +92,16 @@ export const techSections: TechItem[] = [
   },
   {
     title: 'Application architecture',
-    decision: 'Standalone feature pages with lazy-loaded routes, core library for critical infrastructure and shared libraries for reusable UI components and utilities',
+    decision:
+      'Standalone feature pages with lazy-loaded routes, core library for critical infrastructure and shared libraries for reusable UI components and utilities',
     rationale:
-      "Organise by feature (images/, inventory/, deployments/, audit/) not by type. Each feature contains its own routing, feature-specific components, services, and types. Features are lazy-loaded, potentially with services provided at route level where separate instancing is required instead of singletons.",
+      'Organise by feature (images/, inventory/, deployments/, audit/) not by type. Each feature contains its own routing, feature-specific components, services, and types. Features are lazy-loaded, potentially with services provided at route level where separate instancing is required instead of singletons.',
     alt: 'NgModule-per-feature, monorepo Nx workspace',
   },
   {
     title: 'State & data handling',
-    decision: 'Reactive state via Angular Signals + NgRx Signal Store for server state. Allow limited zone-based change detection initially, removed in final sprint',
+    decision:
+      'Reactive state via Angular Signals + NgRx Signal Store for server state. Allow limited zone-based change detection initially, removed in final sprint',
     rationale:
       'Angular Signals replace Zone.js for granular, synchronous reactivity in component state. Server state belongs in NgRx Signal Store',
     alt: 'Traditional zone-based change detection throughout, NgRx Redux-like store, plain BehaviorSubject services',
@@ -113,17 +115,16 @@ export const techSections: TechItem[] = [
   },
   {
     title: 'Design system & components',
-    decision:
-      'Angular Material + custom CSS design system targeting technical audience',
+    decision: 'Angular Material + custom CSS design system targeting technical audience',
     rationale:
       'Angular Material provides a suite of ready-made components with all accessibility and interaction behaviours built in, along with the familiar Google design system that will ultimately be overwritten with a more information-dense custom design system.',
     alt: 'Angular Component Developer Kit, PrimeNG',
   },
   {
     title: 'Testing approach',
-    decision: 'Jest + Angular Testing Library · Playwright (E2E) · Mock Service Worker (API mocking)',
+    decision: 'Jest + Angular Testing Library · Playwright (E2E)',
     rationale:
-      'Angular Testing Library tests user behaviour not implementation. MSW intercepts HTTP at the network level and works identically across dev, test, and Storybook.',
+      'Follow testing pyramid - E2E covers core happy paths, as well as critical edge cases like auth and errors. Focus on testing behaviour not implementation.',
     alt: 'Karma + Jasmine, Cypress',
   },
   {
