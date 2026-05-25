@@ -14,14 +14,7 @@ import { ContentService } from '../../data-access/services/content.service';
         rejected. The goal is a frontend that earns operator trust.
       </p>
 
-      <div class="flex-col gap-2">
-        @for (item of TECH_SECTIONS(); track item.title; let i = $index) {
-          <app-tech-section [item]="item" [isOpen]="openTech === i" (toggled)="toggleTech(i)">
-          </app-tech-section>
-        }
-      </div>
-
-      <div class="box border-box mt-4">
+      <div class="box border-box mb-4">
         <h3 class="text-sm text-muted uppercase mt-0 mb-2">Key dependency map</h3>
         <div class="grid">
           @for (d of DEPENDENCIES(); track d.label) {
@@ -31,6 +24,13 @@ import { ContentService } from '../../data-access/services/content.service';
             </div>
           }
         </div>
+      </div>
+
+      <div class="flex-col gap-2">
+        @for (item of TECH_SECTIONS(); track item.title; let i = $index) {
+          <app-tech-section [item]="item" [isOpen]="openTech === i" (toggled)="toggleTech(i)">
+          </app-tech-section>
+        }
       </div>
     </div>
   `,
@@ -47,5 +47,4 @@ export class TechnicalDesignPageComponent {
   public toggleTech(index: number) {
     this.openTech = this.openTech === index ? null : index;
   }
-
 }

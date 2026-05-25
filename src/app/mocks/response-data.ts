@@ -117,7 +117,7 @@ export const techSections: TechItem[] = [
       'Angular Material + custom CSS design system targeting technical audience',
     rationale:
       'Angular Material provides a suite of ready-made components with all accessibility and interaction behaviours built in, along with the familiar Google design system that will ultimately be overwritten with a more information-dense custom design system.',
-    alt: 'PrimeNG',
+    alt: 'Angular Component Developer Kit, PrimeNG',
   },
   {
     title: 'Testing approach',
@@ -137,12 +137,12 @@ export const techSections: TechItem[] = [
 
 export const dependencies: Dependency[] = [
   { label: 'Angular 18+', role: 'UI framework' },
-  { label: 'TypeScript', role: 'Safety net' },
+  { label: 'TypeScript', role: 'Type safety' },
   { label: 'Angular CLI', role: 'Build tooling (esbuild)' },
+  { label: 'Angular Material', role: 'Component library' },
+  { label: 'RxJS Observables', role: 'Async & real-time data' },
+  { label: 'Signals', role: 'Reactive UI state' },
   { label: 'NgRx Signal Store', role: 'State Management' },
-  { label: 'Angular Signals', role: 'Reactive UI state' },
-  { label: 'RxJS', role: 'Async & real-time' },
-  { label: 'Angular Material', role: 'Accessible primitives' },
   { label: 'MSW', role: 'API mocking' },
   { label: 'Playwright', role: 'E2E tests' },
 ];
