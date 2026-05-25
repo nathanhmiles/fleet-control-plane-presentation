@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Dependency, Epic, Phase, Principle, Risk, Section, TechItem } from '../types/content.types';
+import { Dependency, Epic, Phase, Risk, Section, TechItem } from '../types/content.types';
 import { ContentApiService } from './content-api.service';
 
 @Injectable({ providedIn: 'root' })
@@ -25,10 +25,6 @@ export class ContentService {
 
   getPhases(): Observable<Phase[]> {
     return this._contentApiService.getPhases();
-  }
-
-  getPrinciples(): Observable<Principle[]> {
-    return this._contentApiService.getPrinciples();
   }
 
   getRisks(): Observable<Risk[]> {

@@ -2,7 +2,6 @@ import {
   Dependency,
   Epic,
   Phase,
-  Principle,
   Risk,
   Section,
   TechItem,
@@ -212,16 +211,6 @@ export const phases: Phase[] = [
       'Keyboard shortcuts and command palette for rapid, mouse-free operator workflows',
       'Accessibility audit and full keyboard navigation compliance fixes',
     ],
-  },
-];
-
-export const principles: Principle[] = [
-  { title: 'MSW first', desc: 'Write mock handlers before any component.' },
-  { title: 'Demo early', desc: 'Phase 1 produces something a real user can click.' },
-  { title: 'Hard problems first', desc: 'Real-time is in phase 2, not phase 4.' },
-  {
-    title: 'Polish is a phase',
-    desc: 'Accessibility and performance are explicitly scoped in phase 4.',
   },
 ];
 

@@ -1,28 +1,18 @@
 import { Component, inject } from '@angular/core';
 import { DeliveryPhaseComponent } from '../../components/delivery-phase/delivery-phase.component';
-import { PrincipleItemComponent } from '../../components/principle-item/principle-item.component';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ContentService } from '../../data-access/services/content.service';
 
 
 @Component({
   selector: 'app-delivery-plan',
-  imports: [DeliveryPhaseComponent, PrincipleItemComponent],
+  imports: [DeliveryPhaseComponent],
   template: `
     <div>
       <p class="text-muted mb-4">
         Five phases over fourteen weeks. Phase 1 ends with something you can demo to a real
         operator.
       </p>
-
-      <div class="box border-box mb-4">
-        <h3 class="text-sm text-muted uppercase mt-0 mb-2">Sequencing principles</h3>
-        <ul class="no-bullets pl-0 text-sm flex-col gap-2">
-          @for (principle of PRINCIPLES(); track principle.title) {
-            <app-principle-item [principle]="principle"></app-principle-item>
-          }
-        </ul>
-      </div>
 
       <div class="flex gap-2 wrap mb-4">
         @for (p of PHASES(); track p.phase; let i = $index) {
@@ -77,8 +67,6 @@ export class DeliveryPlanPageComponent {
   private readonly _contentService = inject(ContentService);
 
   readonly PHASES = toSignal(this._contentService.getPhases());
-
-  readonly PRINCIPLES = toSignal(this._contentService.getPrinciples());
 
   setDelivery(index: number) {
     this.openDelivery = index;

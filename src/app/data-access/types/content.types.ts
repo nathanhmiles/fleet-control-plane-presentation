@@ -28,11 +28,6 @@ export interface Phase {
   items: string[];
 }
 
-export interface Principle {
-  title: string;
-  desc: string;
-}
-
 export interface Section {
   id: string;
   label: string;

@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import {sections, epics, techSections, dependencies, phases, principles, risks } from './response-data';
+import {sections, epics, techSections, dependencies, phases, risks } from './response-data';
 
 export const handlers = [
   http.get('/api/sections', () => {
@@ -16,9 +16,6 @@ export const handlers = [
   }),
   http.get('/api/phases', () => {
     return HttpResponse.json(phases);
-  }),
-  http.get('/api/principles', () => {
-    return HttpResponse.json(principles);
   }),
   http.get('/api/risks', () => {
     return HttpResponse.json(risks);
