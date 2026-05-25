@@ -216,8 +216,7 @@ export const phases: Phase[] = [
 
 export const risks: Risk[] = [
   {
-    severity: 'High',
-    color: '#ef4444',
+    severity: 'high',
     category: 'Technical',
     risk: 'WebSocket resilience in long-running operator sessions',
     detail:
@@ -226,8 +225,7 @@ export const risks: Risk[] = [
       'Build reconnect and /sync paths in phase 2. Write chaos tests that kill the socket mid-deployment.',
   },
   {
-    severity: 'High',
-    color: '#ef4444',
+    severity: 'high',
     category: 'Product',
     risk: 'Backend API not ready when frontend needs it',
     detail: 'Without an agreed contract, frontend development blocks on real endpoints.',
@@ -235,8 +233,7 @@ export const risks: Risk[] = [
       'Agree OpenAPI specs early. MSW handlers are written against the spec from day one.',
   },
   {
-    severity: 'Low',
-    color: '#10b981',
+    severity: 'low',
     category: 'Team',
     risk: 'Signals adoption curve',
     detail: 'Inconsistent adoption within the team produces a hybrid codebase.',

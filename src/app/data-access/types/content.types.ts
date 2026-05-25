@@ -9,7 +9,6 @@ export interface Risk {
   detail: string;
   severity: string;
   category: string;
-  color: string;
   mitigation: string;
 }
 
