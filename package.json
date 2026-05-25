@@ -1,5 +1,5 @@
 {
-  "name": "interview",
+  "name": "fleet-control-plane-presentation",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build --base-href /fleet-control-plane-presentation/ && npx msw init dist/interview/browser --save && npx angular-cli-ghpages --dir=dist/interview/browser"
+    "deploy": "ng build --base-href=/fleet-control-plane-presentation/ && npx msw init dist/fleet-control-plane-presentation/browser --save && npx angular-cli-ghpages --dir=dist/fleet-control-plane-presentation/browser"
   },
   "packageManager": "npm@11.11.0",
   "dependencies": {
