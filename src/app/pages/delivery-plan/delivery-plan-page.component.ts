@@ -25,9 +25,9 @@ import { ContentService } from '../../data-access/services/content.service';
         }
       </div>
 
-      @for (p of PHASES(); track p.phase; let i = $index) {
+      @for (phase of PHASES(); track phase.phase; let i = $index) {
         @if (openDelivery === i) {
-          <app-delivery-phase [phase]="p"></app-delivery-phase>
+          <app-delivery-phase [phase]="phase"></app-delivery-phase>
         }
       }
     </div>
