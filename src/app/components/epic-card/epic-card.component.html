@@ -1,6 +1,6 @@
-<div class="card" [style.border-left]="'4px solid ' + epic().color">
+<div class="card epic-{{ index() }}">
   <button class="card-header flex items-center gap-2" (click)="onToggle()">
-    <span class="font-mono" [style.color]="epic().color">{{ epic().id }}</span>
+    <span class="font-mono accent-text">{{ epic().id }}</span>
     <span class="font-bold flex-1">{{ epic().title }}</span>
     <span class="text-sm text-muted">{{ epic().stories.length }} stories</span>
     <span>{{ isOpen() ? '▼' : '▶' }}</span>
@@ -10,7 +10,7 @@
     <div class="card-body">
       <ul>
         @for (s of epic().stories; track s) {
-          <li><span [style.color]="epic().accent">▸</span> {{ s }}</li>
+          <li><span class="accent-dot">▸</span> {{ s }}</li>
         }
       </ul>
       <div class="box muted-box text-sm">

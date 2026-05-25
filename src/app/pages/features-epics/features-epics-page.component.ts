@@ -16,9 +16,10 @@ import { ContentService } from '../../data-access/services/content.service';
       </p>
 
       <div class="flex-col gap-2">
-        @for (epic of EPICS(); track epic.id) {
+        @for (epic of EPICS(); track epic.id; let i = $index) {
           <app-epic-card
             [epic]="epic"
+            [index]="i"
             [isOpen]="openEpic === epic.id"
             (toggled)="toggleEpic($event)"
           >

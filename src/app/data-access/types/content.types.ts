@@ -1,8 +1,6 @@
 export type Epic = {
   id: string;
   title: string;
-  color: string;
-  accent: string;
   stories: string[];
   assumption: string;
 };

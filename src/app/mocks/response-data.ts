@@ -19,8 +19,6 @@ export const epics: Epic[] = [
   {
     id: 'E1',
     title: 'Platform Foundation',
-    color: '#6b7280',
-    accent: '#9ca3af',
     stories: [
       'Auth via SSO / OIDC with role-based access (read-only, operator, admin)',
       'Global navigation, deep-linking, and browser history integration',
@@ -33,8 +31,6 @@ export const epics: Epic[] = [
   {
     id: 'E2',
     title: 'Image Management',
-    color: '#3b82f6',
-    accent: '#93c5fd',
     stories: [
       'Browse image catalogue with version history, changelogs, and metadata',
       'Define image composition: base OS, package sets, config layers, secrets refs',
@@ -48,8 +44,6 @@ export const epics: Epic[] = [
   {
     id: 'E3',
     title: 'Target Inventory',
-    color: '#8b5cf6',
-    accent: '#c4b5fd',
     stories: [
       'Inventory view: filterable/sortable table of all targets (devices, VMs, groups)',
       'Per-target detail: current image, version, health metrics, last deployment',
@@ -62,8 +56,6 @@ export const epics: Epic[] = [
   {
     id: 'E4',
     title: 'Deployment Operations',
-    color: '#f59e0b',
-    accent: '#fcd34d',
     stories: [
       'Select one or many targets (individual devices, groups, or ad-hoc selections)',
       'Choose operation: fresh install, re-image, rollback to a named version',
@@ -77,8 +69,6 @@ export const epics: Epic[] = [
   {
     id: 'E5',
     title: 'Real-time Progress',
-    color: '#10b981',
-    accent: '#6ee7b7',
     stories: [
       'Live per-target progress: stage names, percentages, elapsed/estimated time',
       'Fleet-level rollout view: how many targets are pending/in-progress/done/failed',
@@ -91,8 +81,6 @@ export const epics: Epic[] = [
   {
     id: 'E6',
     title: 'Audit & Compliance',
-    color: '#ef4444',
-    accent: '#fca5a5',
     stories: [
       'Deployment history: who deployed what, to which targets, when, and with what outcome',
       'Filterable audit log with per-record detail (pre/post image, operator, duration)',
