@@ -2,14 +2,14 @@
   <button class="card-header flex items-center gap-2" (click)="onToggle()">
     <span class="font-mono accent-text">{{ epic().id }}</span>
     <span class="font-bold flex-1">{{ epic().title }}</span>
-    <span class="text-sm text-muted">{{ epic().stories.length }} stories</span>
+    <span class="text-sm text-muted">{{ epic().features.length }} features</span>
     <span>{{ isOpen() ? '▼' : '▶' }}</span>
   </button>
 
   @if (isOpen()) {
     <div class="card-body">
       <ul>
-        @for (s of epic().stories; track s) {
+        @for (s of epic().features; track s) {
           <li>{{ s }}</li>
         }
       </ul>

@@ -18,7 +18,7 @@ export const epics: Epic[] = [
   {
     id: 'E1',
     title: 'Platform Foundation',
-    stories: [
+    features: [
       'Auth via SSO / OIDC with role-based access (read-only, operator, admin)',
       'Global navigation, deep-linking, and browser history integration',
       'Design system: component library, tokens, dark mode, accessible by default',
@@ -28,7 +28,7 @@ export const epics: Epic[] = [
   {
     id: 'E2',
     title: 'Image Management',
-    stories: [
+    features: [
       'Browse image catalogue with version history, changelogs, and metadata',
       'Define image composition: base OS, package sets, config layers, secrets refs',
       'Publish a new image version with validation and signing status',
@@ -39,7 +39,7 @@ export const epics: Epic[] = [
   {
     id: 'E3',
     title: 'Target Inventory',
-    stories: [
+    features: [
       'Inventory view: filterable/sortable table of all targets (devices, VMs, groups)',
       'Per-target detail: current image, version, health metrics, last deployment',
       'Status indicators: online/offline/degraded/unknown with staleness cues',
@@ -50,7 +50,7 @@ export const epics: Epic[] = [
   {
     id: 'E4',
     title: 'Deployment Operations',
-    stories: [
+    features: [
       'Select one or many targets (individual devices, groups, or ad-hoc selections)',
       'Choose operation: fresh install, re-image, rollback to a named version',
       'Pre-flight compatibility check: hardware/OS requirements, storage, connectivity',
@@ -61,7 +61,7 @@ export const epics: Epic[] = [
   {
     id: 'E5',
     title: 'Real-time Progress',
-    stories: [
+    features: [
       'Live per-target progress: stage names, percentages, elapsed/estimated time',
       'Fleet-level rollout view: how many targets are pending/in-progress/done/failed',
       'Stage-by-stage logs: expandable streaming log output per target',
@@ -72,7 +72,7 @@ export const epics: Epic[] = [
   {
     id: 'E6',
     title: 'Audit & Compliance',
-    stories: [
+    features: [
       'Deployment history: who deployed what, to which targets, when, and with what outcome',
       'Filterable audit log with per-record detail (pre/post image, operator, duration)',
       'Export to CSV/JSON for external compliance tooling',
