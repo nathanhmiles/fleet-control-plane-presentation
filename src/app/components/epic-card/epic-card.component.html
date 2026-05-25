@@ -10,12 +10,9 @@
     <div class="card-body">
       <ul>
         @for (s of epic().stories; track s) {
-          <li><span class="accent-dot">▸</span> {{ s }}</li>
+          <li>{{ s }}</li>
         }
       </ul>
-      <div class="box muted-box text-sm">
-        <strong>Assumption:</strong> {{ epic().assumption }}
-      </div>
     </div>
   }
 </div>

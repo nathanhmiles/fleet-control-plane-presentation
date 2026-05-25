@@ -25,8 +25,6 @@ export const epics: Epic[] = [
       'Design system: component library, tokens, dark mode, accessible by default',
       'Observability: client-side error tracking and performance monitoring',
     ],
-    assumption:
-      'Angular Material is the deliberate choice for launch velocity, not a permanent commitment. NgRx Signal Store slices are the standard pattern for all feature state; no feature reaches production holding state in component-local signals alone.',
   },
   {
     id: 'E2',
@@ -38,8 +36,6 @@ export const epics: Epic[] = [
       'Compare two image versions diff-style before promoting',
       'Tag and promote images across environments (dev → staging → prod)',
     ],
-    assumption:
-      'Image builds happen in CI; UI is for configuration and promotion, not build execution',
   },
   {
     id: 'E3',
@@ -51,7 +47,6 @@ export const epics: Epic[] = [
       'Hardware groups: create, edit, nest; assign targets to groups',
       'Search and multi-select across device types and groups',
     ],
-    assumption: 'Agent heartbeat data and health metrics are streamed via a backend events API',
   },
   {
     id: 'E4',
@@ -63,8 +58,6 @@ export const epics: Epic[] = [
       'Review and confirm: show a diff of what will change before committing',
       'Schedule deployment for a future maintenance window',
     ],
-    assumption:
-      'Compatibility rules are served by the backend; UI renders results, does not compute them',
   },
   {
     id: 'E5',
@@ -76,7 +69,6 @@ export const epics: Epic[] = [
       'Pause, resume, and abort individual targets or the whole rollout',
       'Persistent state: progress survives page reload and long sessions (hours)',
     ],
-    assumption: 'Backend pushes events via WebSocket; page is treated as a long-lived observer',
   },
   {
     id: 'E6',
@@ -87,8 +79,6 @@ export const epics: Epic[] = [
       'Export to CSV/JSON for external compliance tooling',
       'Immutable log: UI cannot edit or delete audit records',
     ],
-    assumption:
-      'Audit records are append-only at the backend; export is a server-generated download',
   },
 ];
 

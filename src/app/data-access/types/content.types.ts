@@ -2,7 +2,6 @@ export type Epic = {
   id: string;
   title: string;
   stories: string[];
-  assumption: string;
 };
 
 export interface Risk {
