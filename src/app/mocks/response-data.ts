@@ -218,6 +218,33 @@ export const risks: Risk[] = [
   {
     severity: 'high',
     category: 'Technical',
+    risk: 'Event Ordering/State Consistency',
+    detail:
+      'Race conditinos, stale state, incorrect ordering, duplicated events may result in inconsistent state at best, or data corruption at worst. Impacts trust in the system.',
+    mitigation:
+      'Use sequence/version IDs per deployment stream, idempotent reducers, and periodic backend reconciliation against frontend state.',
+  },
+  {
+    severity: 'high',
+    category: 'Technical',
+    risk: 'UI responsiveness degrades under large fleet sizes or prolonged sessions.',
+    detail:
+      'Long-lived operator sessions combined with high-frequency realtime updates may cause memory leaks, excessive rerendering, or browser instability.',
+    mitigation:
+      'High performance change detection strategy using Signals and OnPush. Assess risk early using large-scale mock datasets',
+  },
+  {
+    severity: 'medium',
+    category: 'Product',
+    risk: 'Experienced operators reject the UI because workflows feel slower or less trustworthy than CLI tooling.',
+    detail:
+      'Target audience are tech-savvy operators who prioritise speed, visibility, and predictability. Poor workflow design could limit adoption even if functionality exists.',
+    mitigation:
+      'Prioritise technical power-user features. Short feedback loops to address missing functionality quickly. Optimise for keyboard efficiency, information density, and transparent system state.',
+  },
+  {
+    severity: 'high',
+    category: 'Technical',
     risk: 'WebSocket resilience in long-running operator sessions',
     detail:
       'A dropped connection mid-deployment creates operator anxiety and risk of missed critical events.',
@@ -231,13 +258,5 @@ export const risks: Risk[] = [
     detail: 'Without an agreed contract, frontend development blocks on real endpoints.',
     mitigation:
       'Agree OpenAPI specs early. MSW handlers are written against the spec from day one.',
-  },
-  {
-    severity: 'low',
-    category: 'Team',
-    risk: 'Signals adoption curve',
-    detail: 'Inconsistent adoption within the team produces a hybrid codebase.',
-    mitigation:
-      'Establish a coding standard: all new components use signals; no new async pipe usage.',
   },
 ];
