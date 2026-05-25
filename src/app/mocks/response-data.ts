@@ -255,7 +255,7 @@ export const risks: Risk[] = [
     severity: 'medium',
     category: 'Product',
     risk: 'Backend API not ready when frontend needs it',
-    detail: 'Without an agreed contract, frontend development blocks on real endpoints.',
+    detail: 'Without an agreed contract, frontend development is blocked by work on real endpoints.',
     mitigation:
       'Agree OpenAPI specs early. MSW handlers are written against the spec from day one.',
   },

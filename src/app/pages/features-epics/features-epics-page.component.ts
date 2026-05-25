@@ -11,7 +11,7 @@ import { ContentService } from '../../data-access/services/content.service';
     <div>
       <p class="text-muted mb-4">
         {{ EPICS().length }} epics covering the full project scope, mapping directly to user-facing capability.
-        Foundation is explicitly scoped, while it has no user-visible feature it is the prerequisite
+        Foundation is explicitly scoped - while it has no user-visible feature it is the prerequisite
         for delivering the first vertical slice to the user.
       </p>
 
