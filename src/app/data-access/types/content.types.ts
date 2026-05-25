@@ -17,7 +17,6 @@ export interface Risk {
 }
 
 export interface TechItem {
-  icon: string;
   title: string;
   decision: string;
   rationale: string;

@@ -106,7 +106,6 @@ export const epics: Epic[] = [
 export const techSections: TechItem[] = [
   {
     title: 'Framework & language',
-    icon: '⬡',
     decision: 'Angular 18+ (standalone) + TypeScript + Angular CLI (esbuild)',
     rationale:
       'Angular is a strong fit for this problem: a safety-critical, long-session ops tool operated by professional engineers. Its opinionated structure means new team members know exactly where to find things, and its first-class TypeScript integration — decorators, strict templates, generated types — makes the whole codebase a type-safe surface.',
@@ -114,7 +113,6 @@ export const techSections: TechItem[] = [
   },
   {
     title: 'Application architecture',
-    icon: '◈',
     decision: 'Feature-first with lazy-loaded standalone routes + shared core',
     rationale:
       "Organise by feature (images/, inventory/, deployments/, audit/) not by type. Each feature folder owns its routed components, feature-scoped services, and types. Features are lazy-loaded via Angular Router's loadComponent and loadChildren.",
@@ -122,15 +120,13 @@ export const techSections: TechItem[] = [
   },
   {
     title: 'State & data handling',
-    icon: '◎',
-    decision: 'Angular Signals for reactive state + NgRx Signal Store for server state',
+    decision: 'Short term: Zone.js, Long term: Angular Signals for reactive state + NgRx Signal Store for server state',
     rationale:
       'Angular Signals replace Zone.js for granular, synchronous reactivity in component state. Server state belongs in NgRx Signal Store',
     alt: 'NgRx Redux-like store, plain BehaviorSubject services',
   },
   {
     title: 'Real-time strategy',
-    icon: '⟳',
     decision: 'Native WebSocket RxJs Observable + operators, bridged to Signals via toSignal()',
     rationale:
       "RxJS's webSocket() factory wraps a native WebSocket in an Observable. Feature services pipe from those streams and expose signals via toSignal().",
@@ -138,7 +134,6 @@ export const techSections: TechItem[] = [
   },
   {
     title: 'Design system & components',
-    icon: '◻',
     decision:
       'Short term: Angular Material, Long term: Angular CDK primitives + custom CSS design system',
     rationale:
@@ -147,15 +142,13 @@ export const techSections: TechItem[] = [
   },
   {
     title: 'Testing approach',
-    icon: '✓',
-    decision: 'Jest + Angular Testing Library · Playwright (E2E) · MSW (API mocking)',
+    decision: 'Jest + Angular Testing Library · Playwright (E2E) · Mock Service Worker (API mocking)',
     rationale:
       'Angular Testing Library tests user behaviour not implementation. MSW intercepts HTTP at the network level and works identically across dev, test, and Storybook.',
     alt: 'Karma + Jasmine, Cypress',
   },
   {
     title: 'Build & deployment',
-    icon: '▲',
     decision: 'Angular CLI (esbuild application builder) → Docker (nginx) → GitHub Actions',
     rationale:
       "The Angular CLI's application builder produces a tree-shaken, code-split static artefact that nginx serves from a Docker container. Trivially portable to on-premise environments.",
@@ -170,7 +163,7 @@ export const dependencies: Dependency[] = [
   { label: 'NgRx Signal Store', role: 'State Management' },
   { label: 'Angular Signals', role: 'Reactive UI state' },
   { label: 'RxJS', role: 'Async & real-time' },
-  { label: 'Angular CDK', role: 'Accessible primitives' },
+  { label: 'Angular Material', role: 'Accessible primitives' },
   { label: 'MSW', role: 'API mocking' },
   { label: 'Playwright', role: 'E2E tests' },
 ];
@@ -184,9 +177,11 @@ export const phases: Phase[] = [
     why: 'Unblock everything — no demo is possible without this',
     items: [
       'Angular CLI scaffold: standalone components, strict mode',
-      'Angular CDK installed; CSS custom properties',
-      'Angular Router: shell route, lazy feature routes',
-      'MSW installed with first handler; HTTP interceptor',
+      'Angular Material installed: global theme tokens set to neutral defaults — no custom branding yet',
+      'Angular Router: shell route, lazy feature routes, auth guard',
+      'Mock Service Worker set up with mock backend response data; HTTP auth interceptor',
+      'GitHub Actions: ng lint → ng test → ng build → Playwright smoke',
+      'APP_INITIALIZER fetches runtime feature-flag config',
     ],
   },
   {
@@ -196,10 +191,11 @@ export const phases: Phase[] = [
     color: '#3b82f6',
     why: 'Something real to show stakeholders',
     items: [
-      'Target inventory: CdkVirtualScrollViewport table',
-      'Target detail side panel',
+      'Target inventory: MatTable + virtual scroll with sort, filter, search',
+      'Target detail side panel (MatSidenav)',
       'Image catalogue list with version history',
-      'Deployment wizard: target selection → confirm',
+      'Deployment wizard (MatStepper):  target selection → confirm',
+      'Playwright E2E test for core journey',
     ],
   },
   {
@@ -207,7 +203,7 @@ export const phases: Phase[] = [
     title: 'Real-time Core',
     weeks: 'Weeks 6–8',
     color: '#10b981',
-    why: "This is the product's hardest capability",
+    why: "This is the product's hardest capability - ship it on top of Material so UI risk and real-time risk don't land at the same time",
     items: [
       'WebSocketService in core/ using RxJS webSocket()',
       'toSignal() bridges topic streams',
@@ -230,12 +226,26 @@ export const phases: Phase[] = [
   },
   {
     phase: 'Phase 4',
+    title: 'Design System Pivot',
+    weeks: 'Weeks 12–16',
+    color: '#ec4899',
+    why: 'Replace Angular Material with an owned CDK-based design system — now that the product is validated, invest in the visual language that will earn long-term operator trust',
+    items: [
+      'Establish design token foundation: CSS custom properties for colour, spacing, type scale, and elevation — these become the single source of truth',
+      'Build the CDK component library incrementally: start with the five highest-usage components (table, button, drawer, badge, form input)',
+      'Migrate feature by feature, not component by component — inventory feature first, then deployments, then audit — so each slice is shippable independently',
+      'Visual regression suite with Playwright screenshots locked before migration begins — any regression blocks the PR',
+      'Wrap each CDK component in a Storybook story before the Material counterpart is removed — demonstrate parity',
+    ],
+  },
+  {
+    phase: 'Phase 5',
     title: 'Scale & Polish',
     weeks: 'Weeks 12–14',
     color: '#8b5cf6',
     why: 'Make it fast for real fleets',
     items: [
-      'Zoneless change detection opt-in',
+      'Zoneless change detection opt-in - migrate components to signal-only, remove Zone.js dependency',
       'Performance: profile with 10k-target datasets',
       'Keyboard shortcuts and command palette',
       'Accessibility audit and fixes',
