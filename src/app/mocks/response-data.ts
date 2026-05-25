@@ -136,15 +136,15 @@ export const techSections: TechItem[] = [
 ];
 
 export const dependencies: Dependency[] = [
-  { label: 'Angular 18+', role: 'UI framework' },
-  { label: 'TypeScript', role: 'Type safety' },
-  { label: 'Angular CLI', role: 'Build tooling (esbuild)' },
-  { label: 'Angular Material', role: 'Component library' },
-  { label: 'RxJS Observables', role: 'Async & real-time data' },
-  { label: 'Signals', role: 'Reactive UI state' },
-  { label: 'NgRx Signal Store', role: 'State Management' },
-  { label: 'MSW', role: 'API mocking' },
-  { label: 'Playwright', role: 'E2E tests' },
+  { label: 'Angular 18+', role: 'UI framework', url: 'https://angular.dev' },
+  { label: 'TypeScript', role: 'Type safety', url: 'https://www.typescriptlang.org' },
+  { label: 'Angular CLI', role: 'Build tooling (esbuild)', url: 'https://angular.dev/tools/cli' },
+  { label: 'Angular Material', role: 'Component library', url: 'https://material.angular.io' },
+  { label: 'RxJS Observables', role: 'Async & real-time data', url: 'https://rxjs.dev' },
+  { label: 'Signals', role: 'Reactive UI state', url: 'https://angular.dev/guide/signals' },
+  { label: 'NgRx Signal Store', role: 'State Management', url: 'https://ngrx.io/guide/signals' },
+  { label: 'MSW', role: 'API mocking', url: 'https://mswjs.io' },
+  { label: 'Playwright', role: 'E2E tests', url: 'https://playwright.dev' },
 ];
 
 export const phases: Phase[] = [

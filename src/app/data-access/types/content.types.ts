@@ -35,4 +35,5 @@ export interface Section {
 export interface Dependency {
   label: string;
   role: string;
+  url?: string;
 }

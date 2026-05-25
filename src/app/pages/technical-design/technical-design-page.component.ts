@@ -19,7 +19,11 @@ import { ContentService } from '../../data-access/services/content.service';
         <div class="grid">
           @for (d of DEPENDENCIES(); track d.label) {
             <div class="box border-box small-pad text-sm">
-              <div class="font-bold font-mono">{{ d.label }}</div>
+              @if (d.url) {
+                <a [href]="d.url" target="_blank" class="font-bold font-mono no-underline hover-underline">{{ d.label }}</a>
+              } @else {
+                <div class="font-bold font-mono">{{ d.label }}</div>
+              }
               <div class="text-muted">{{ d.role }}</div>
             </div>
           }
