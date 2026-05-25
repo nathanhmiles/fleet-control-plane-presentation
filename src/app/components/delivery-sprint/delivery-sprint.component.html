@@ -1,16 +1,16 @@
-<div class="card p-4" [style.border-left]="'4px solid ' + sprint().color">
+<div class="card p-4 sprint-accent">
   <div class="flex items-center gap-2 mb-2">
-    <span class="font-mono text-sm" [style.color]="sprint().color">{{ sprint().sprint }}</span>
+    <span class="font-mono text-sm sprint-accent-text">{{ sprint().sprint }}</span>
     <span class="font-bold text-lg flex-1">{{ sprint().title }}</span>
     <span class="text-sm text-muted">{{ sprint().weeks }}</span>
   </div>
-  <div class="box text-sm mb-2" [style.background]="sprint().color + '1A'" [style.color]="sprint().color">
+  <div class="box text-sm mb-2 sprint-accent-box">
     <em>{{ sprint().why }}</em>
   </div>
   <ul class="no-bullets pl-0">
     @for (item of sprint().items; track item; let j = $index) {
       <li class="flex gap-2 mb-1">
-        <span class="font-mono text-sm" [style.color]="sprint().color">{{ (j + 1).toString().padStart(2, '0') }}</span>
+        <span class="font-mono text-sm sprint-accent-text">{{ (j + 1).toString().padStart(2, '0') }}</span>
         <span>{{ item }}</span>
       </li>
     }
