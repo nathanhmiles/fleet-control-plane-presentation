@@ -106,49 +106,56 @@ export class ContentService {
         title: 'Framework & language',
         icon: '⬡',
         decision: 'Angular 18+ (standalone) + TypeScript + Angular CLI (esbuild)',
-        rationale: "Angular is a strong fit for this problem: a safety-critical, long-session ops tool operated by professional engineers. Its opinionated structure means new team members know exactly where to find things, and its first-class TypeScript integration — decorators, strict templates, generated types — makes the whole codebase a type-safe surface.",
-        alt: 'Considered: React (excellent component model, but no built-in DI, router, or forms), Vue 3',
+        rationale:
+          'Angular is a strong fit for this problem: a safety-critical, long-session ops tool operated by professional engineers. Its opinionated structure means new team members know exactly where to find things, and its first-class TypeScript integration — decorators, strict templates, generated types — makes the whole codebase a type-safe surface.',
+        alt: 'React (excellent component model, but no built-in DI, router, or forms), Vue 3',
       },
       {
         title: 'Application architecture',
         icon: '◈',
         decision: 'Feature-first with lazy-loaded standalone routes + shared core',
-        rationale: "Organise by feature (images/, inventory/, deployments/, audit/) not by type. Each feature folder owns its routed components, feature-scoped services, and types. Features are lazy-loaded via Angular Router's loadComponent and loadChildren.",
+        rationale:
+          "Organise by feature (images/, inventory/, deployments/, audit/) not by type. Each feature folder owns its routed components, feature-scoped services, and types. Features are lazy-loaded via Angular Router's loadComponent and loadChildren.",
         alt: 'NgModule-per-feature, monorepo Nx workspace',
       },
       {
         title: 'State & data handling',
         icon: '◎',
         decision: 'Angular Signals for reactive state + NgRx Signal Store for server state',
-        rationale: "Angular Signals replace Zone.js for granular, synchronous reactivity in component state. Server state belongs in NgRx Signal Store",
+        rationale:
+          'Angular Signals replace Zone.js for granular, synchronous reactivity in component state. Server state belongs in NgRx Signal Store',
         alt: 'NgRx Redux-like store, plain BehaviorSubject services',
       },
       {
         title: 'Real-time strategy',
         icon: '⟳',
-        decision: 'RxJS WebSocketSubject + operators, bridged to Signals via toSignal()',
-        rationale: "RxJS's webSocket() factory wraps a native WebSocket in an Observable. Feature services pipe from those streams and expose signals via toSignal().",
-        alt: 'socket.io, raw Observable BehaviorSubjects without toSignal',
+        decision: 'Native WebSocket RxJs Observable + operators, bridged to Signals via toSignal()',
+        rationale:
+          "RxJS's webSocket() factory wraps a native WebSocket in an Observable. Feature services pipe from those streams and expose signals via toSignal().",
+        alt: "React's TanStack Query, raw Observable BehaviorSubjects without toSignal"
       },
       {
         title: 'Design system & components',
         icon: '◻',
-        decision: 'Custom library on Angular CDK primitives + CSS custom properties',
-        rationale: "Build the product's component library on top of CDK, styled entirely with CSS custom properties for theming. The CDK gives the hard accessibility and interaction behaviours for free.",
-        alt: 'Angular Material, PrimeNG',
+        decision: 'Short term: Angular Material, Long term: Angular CDK primitives + custom CSS design system',
+        rationale:
+          "Angular Material provides a suite of ready-made components with all accessibility and interaction behaviours built in, along with the familiar Google design system. Quickly transition to a component library built on top of the Angular CDK, styled entirely with CSS custom properties for theming.",
+        alt: 'PrimeNG',
       },
       {
         title: 'Testing approach',
         icon: '✓',
         decision: 'Jest + Angular Testing Library · Playwright (E2E) · MSW (API mocking)',
-        rationale: "Angular Testing Library tests user behaviour not implementation. MSW intercepts HTTP at the network level and works identically across dev, test, and Storybook.",
+        rationale:
+          'Angular Testing Library tests user behaviour not implementation. MSW intercepts HTTP at the network level and works identically across dev, test, and Storybook.',
         alt: 'Karma + Jasmine, Cypress',
       },
       {
         title: 'Build & deployment',
         icon: '▲',
         decision: 'Angular CLI (esbuild application builder) → Docker (nginx) → GitHub Actions',
-        rationale: "The Angular CLI's application builder produces a tree-shaken, code-split static artefact that nginx serves from a Docker container. Trivially portable to on-premise environments.",
+        rationale:
+          "The Angular CLI's application builder produces a tree-shaken, code-split static artefact that nginx serves from a Docker container. Trivially portable to on-premise environments.",
         alt: 'Vercel/Netlify, webpack builder',
       },
     ]);
