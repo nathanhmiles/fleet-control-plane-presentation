@@ -1,7 +1,7 @@
 import {
   Dependency,
   Epic,
-  Phase,
+  Sprint,
   Principle,
   Risk,
   Section,
@@ -27,7 +27,8 @@ export const epics: Epic[] = [
       'Design system: component library, tokens, dark mode, accessible by default',
       'Observability: client-side error tracking and performance monitoring',
     ],
-    assumption: 'RBAC enforced at API layer; UI reflects permissions, not enforces them',
+    assumption:
+      'Angular Material is the deliberate choice for launch velocity, not a permanent commitment. NgRx Signal Store slices are the standard pattern for all feature state; no feature reaches production holding state in component-local signals alone.',
   },
   {
     id: 'E2',
@@ -113,9 +114,9 @@ export const techSections: TechItem[] = [
   },
   {
     title: 'Application architecture',
-    decision: 'Feature-first with lazy-loaded standalone routes + shared core',
+    decision: 'Standalone feature pages with lazy-loaded routes, core library for critical infrastructure and shared libraries for reusable UI components and utilities',
     rationale:
-      "Organise by feature (images/, inventory/, deployments/, audit/) not by type. Each feature folder owns its routed components, feature-scoped services, and types. Features are lazy-loaded via Angular Router's loadComponent and loadChildren.",
+      "Organise by feature (images/, inventory/, deployments/, audit/) not by type. Each feature contains its own routing, feature-specific components, services, and types. Features are lazy-loaded, potentially with services provided at route level where separate instancing is required instead of singletons.",
     alt: 'NgModule-per-feature, monorepo Nx workspace',
   },
   {
@@ -168,16 +169,16 @@ export const dependencies: Dependency[] = [
   { label: 'Playwright', role: 'E2E tests' },
 ];
 
-export const phases: Phase[] = [
+export const sprints: Sprint[] = [
   {
-    phase: 'Phase 0',
+    sprint: 'Sprint 0',
     title: 'Foundation',
     weeks: 'Weeks 1–2',
     color: '#6b7280',
     why: 'Unblock everything — no demo is possible without this',
     items: [
-      'Angular CLI scaffold: standalone components, strict mode',
-      'Angular Material installed: global theme tokens set to neutral defaults — no custom branding yet',
+      'Angular CLI scaffold: standalone components, TypeScript configuration, strict mode',
+      'Angular Material installed: default theme — no custom branding yet',
       'Angular Router: shell route, lazy feature routes, auth guard',
       'Mock Service Worker set up with mock backend response data; HTTP auth interceptor',
       'GitHub Actions: ng lint → ng test → ng build → Playwright smoke',
@@ -185,8 +186,8 @@ export const phases: Phase[] = [
     ],
   },
   {
-    phase: 'Phase 1',
-    title: 'Credible Demo',
+    sprint: 'Sprint 1',
+    title: 'Demo of core functionality',
     weeks: 'Weeks 3–5',
     color: '#3b82f6',
     why: 'Something real to show stakeholders',
@@ -199,7 +200,7 @@ export const phases: Phase[] = [
     ],
   },
   {
-    phase: 'Phase 2',
+    sprint: 'Sprint 2',
     title: 'Real-time Core',
     weeks: 'Weeks 6–8',
     color: '#10b981',
@@ -212,7 +213,7 @@ export const phases: Phase[] = [
     ],
   },
   {
-    phase: 'Phase 3',
+    sprint: 'Sprint 3',
     title: 'Safety & Compliance',
     weeks: 'Weeks 9–11',
     color: '#f59e0b',
@@ -225,7 +226,7 @@ export const phases: Phase[] = [
     ],
   },
   {
-    phase: 'Phase 4',
+    sprint: 'Sprint 4',
     title: 'Design System Pivot',
     weeks: 'Weeks 12–16',
     color: '#ec4899',
@@ -239,7 +240,7 @@ export const phases: Phase[] = [
     ],
   },
   {
-    phase: 'Phase 5',
+    sprint: 'Sprint 5',
     title: 'Scale & Polish',
     weeks: 'Weeks 12–14',
     color: '#8b5cf6',
@@ -255,11 +256,11 @@ export const phases: Phase[] = [
 
 export const principles: Principle[] = [
   { title: 'MSW first', desc: 'Write mock handlers before any component.' },
-  { title: 'Demo early', desc: 'Phase 1 produces something a real user can click.' },
-  { title: 'Hard problems first', desc: 'Real-time is in phase 2, not phase 4.' },
+  { title: 'Demo early', desc: 'Sprint 1 produces something a real user can click.' },
+  { title: 'Hard problems first', desc: 'Real-time is in sprint 2, not sprint 4.' },
   {
-    title: 'Polish is a phase',
-    desc: 'Accessibility and performance are explicitly scoped in phase 4.',
+    title: 'Polish is a sprint',
+    desc: 'Accessibility and performance are explicitly scoped in sprint 4.',
   },
 ];
 
@@ -272,7 +273,7 @@ export const risks: Risk[] = [
     detail:
       'A dropped connection mid-deployment creates operator anxiety and risk of missed critical events.',
     mitigation:
-      'Build reconnect and /sync paths in phase 2. Write chaos tests that kill the socket mid-deployment.',
+      'Build reconnect and /sync paths in sprint 2. Write chaos tests that kill the socket mid-deployment.',
   },
   {
     severity: 'High',

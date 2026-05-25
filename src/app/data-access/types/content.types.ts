@@ -23,8 +23,8 @@ export interface TechItem {
   alt: string;
 }
 
-export interface Phase {
-  phase: string;
+export interface Sprint {
+  sprint: string;
   title: string;
   weeks: string;
   why: string;
