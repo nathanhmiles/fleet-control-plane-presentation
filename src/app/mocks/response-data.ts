@@ -121,10 +121,10 @@ export const techSections: TechItem[] = [
   },
   {
     title: 'State & data handling',
-    decision: 'Short term: Zone.js, Long term: Angular Signals for reactive state + NgRx Signal Store for server state',
+    decision: 'Reactive state via Angular Signals + NgRx Signal Store for server state. Allow limited zone-based change detection initially, removed in final sprint',
     rationale:
       'Angular Signals replace Zone.js for granular, synchronous reactivity in component state. Server state belongs in NgRx Signal Store',
-    alt: 'NgRx Redux-like store, plain BehaviorSubject services',
+    alt: 'Traditional zone-based change detection throughout, NgRx Redux-like store, plain BehaviorSubject services',
   },
   {
     title: 'Real-time strategy',
@@ -178,7 +178,7 @@ export const sprints: Sprint[] = [
     why: 'Unblock everything — no demo is possible without this',
     items: [
       'Angular CLI scaffold: standalone components, TypeScript configuration, strict mode',
-      'Angular Material installed: default theme — no custom branding yet',
+      'Angular Material installed: configure default theme as a structural baseline',
       'Angular Router: shell route, lazy feature routes, auth guard',
       'Mock Service Worker set up with mock backend response data; HTTP auth interceptor',
       'GitHub Actions: ng lint → ng test → ng build → Playwright smoke',
@@ -192,10 +192,11 @@ export const sprints: Sprint[] = [
     color: '#3b82f6',
     why: 'Something real to show stakeholders',
     items: [
+      'Design review and global Material density configuration: override component paddings and layouts to force a high-density, utility-first style matching operator expectations',
       'Target inventory: MatTable + virtual scroll with sort, filter, search',
       'Target detail side panel (MatSidenav)',
       'Image catalogue list with version history',
-      'Deployment wizard (MatStepper):  target selection → confirm',
+      'Deployment wizard (MatStepper): target selection → confirm',
       'Playwright E2E test for core journey',
     ],
   },
@@ -207,7 +208,7 @@ export const sprints: Sprint[] = [
     why: "This is the product's hardest capability - ship it on top of Material so UI risk and real-time risk don't land at the same time",
     items: [
       'WebSocketService in core/ using RxJS webSocket()',
-      'toSignal() bridges topic streams',
+      'toSignal() bridges real-time data streams directly into the reactive template layer',
       'Missed-event reconciliation on reconnect',
       'Progress view: per-target stage bar, logs',
     ],
@@ -221,35 +222,21 @@ export const sprints: Sprint[] = [
     items: [
       'Pre-flight compatibility check panel',
       'Rollback operation: version picker',
-      'Audit log: filterable CDK table',
+      'Audit log: filterable high-density data table',
       'RBAC: CanActivate guards',
     ],
   },
   {
     sprint: 'Sprint 4',
-    title: 'Design System Pivot',
-    weeks: 'Weeks 12–16',
-    color: '#ec4899',
-    why: 'Replace Angular Material with an owned CDK-based design system — now that the product is validated, invest in the visual language that will earn long-term operator trust',
-    items: [
-      'Establish design token foundation: CSS custom properties for colour, spacing, type scale, and elevation — these become the single source of truth',
-      'Build the CDK component library incrementally: start with the five highest-usage components (table, button, drawer, badge, form input)',
-      'Migrate feature by feature, not component by component — inventory feature first, then deployments, then audit — so each slice is shippable independently',
-      'Visual regression suite with Playwright screenshots locked before migration begins — any regression blocks the PR',
-      'Wrap each CDK component in a Storybook story before the Material counterpart is removed — demonstrate parity',
-    ],
-  },
-  {
-    sprint: 'Sprint 5',
     title: 'Scale & Polish',
     weeks: 'Weeks 12–14',
     color: '#8b5cf6',
-    why: 'Make it fast for real fleets',
+    why: 'Optimise performance and eliminate framework runtime overhead',
     items: [
-      'Zoneless change detection opt-in - migrate components to signal-only, remove Zone.js dependency',
-      'Performance: profile with 10k-target datasets',
-      'Keyboard shortcuts and command palette',
-      'Accessibility audit and fixes',
+      'Drop Zone.js dependency entirely and transition application configuration to native Zoneless change detection, leveraging the Signal codebase built from Sprint 0',
+      'Performance: profile and benchmark UI responsiveness with simulated 10k-target active streaming datasets',
+      'Keyboard shortcuts and command palette for rapid, mouse-free operator workflows',
+      'Accessibility audit and full keyboard navigation compliance fixes',
     ],
   },
 ];
