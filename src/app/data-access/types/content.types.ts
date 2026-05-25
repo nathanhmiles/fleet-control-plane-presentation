@@ -8,7 +8,7 @@ export interface Risk {
   risk: string;
   detail: string;
   severity: 'high' | 'medium' | 'low';
-  category: string;
+  category: 'Technical' | 'Product' | 'Team';
   mitigation: string;
 }
 

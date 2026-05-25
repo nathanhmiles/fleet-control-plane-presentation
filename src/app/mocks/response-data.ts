@@ -234,15 +234,6 @@ export const risks: Risk[] = [
       'High performance change detection strategy using Signals and OnPush. Assess risk early using large-scale mock datasets',
   },
   {
-    severity: 'medium',
-    category: 'Product',
-    risk: 'Experienced operators reject the UI because workflows feel slower or less trustworthy than CLI tooling.',
-    detail:
-      'Target audience are tech-savvy operators who prioritise speed, visibility, and predictability. Poor workflow design could limit adoption even if functionality exists.',
-    mitigation:
-      'Prioritise technical power-user features. Short feedback loops to address missing functionality quickly. Optimise for keyboard efficiency, information density, and transparent system state.',
-  },
-  {
     severity: 'high',
     category: 'Technical',
     risk: 'WebSocket resilience in long-running operator sessions',
@@ -252,11 +243,29 @@ export const risks: Risk[] = [
       'Build reconnect and /sync paths in phase 2. Write chaos tests that kill the socket mid-deployment.',
   },
   {
-    severity: 'high',
+    severity: 'medium',
+    category: 'Product',
+    risk: 'Experienced operators reject the UI because workflows feel slower or less trustworthy than CLI tooling.',
+    detail:
+      'Target audience are tech-savvy operators who prioritise speed, visibility, and predictability. Poor workflow design could limit adoption even if functionality exists.',
+    mitigation:
+      'Prioritise technical power-user features. Short feedback loops to address missing functionality quickly. Optimise for keyboard efficiency, information density, and transparent system state.',
+  },
+  {
+    severity: 'medium',
     category: 'Product',
     risk: 'Backend API not ready when frontend needs it',
     detail: 'Without an agreed contract, frontend development blocks on real endpoints.',
     mitigation:
       'Agree OpenAPI specs early. MSW handlers are written against the spec from day one.',
+  },
+  {
+    severity: 'low',
+    category: 'Team',
+    risk: 'Rapidly evolving Angular reactive APIs introduce migration or consistency overhead.',
+    detail:
+      'New major version of Angular every six months. State management and change detection patterns are still evolving across the Angular ecosystem, potentially affecting tooling, libraries, and team familiarity.',
+    mitigation:
+      'Constrain patterns using wrappers and clear architecture guidelines. Restrict Angular feature usage to stable releases only.',
   },
 ];
