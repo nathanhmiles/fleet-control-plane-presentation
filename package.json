@@ -7,9 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "npx msw init ./ --save && gh-pages -d build"
+    "deploy": "ng build --base-href /fleet-control-plane-presentation/ && npx msw init dist/interview/browser --save && npx angular-cli-ghpages --dir=dist/interview/browser"
   },
-  "private": true,
   "packageManager": "npm@11.11.0",
   "dependencies": {
     "@angular/common": "^21.2.0",
