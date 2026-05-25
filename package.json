@@ -6,8 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "deploy": "ng build --base-href=/fleet-control-plane-presentation/ && npx msw init dist/fleet-control-plane-presentation/browser --save && npx angular-cli-ghpages --dir=dist/fleet-control-plane-presentation/browser"
+    "test": "ng test"
   },
   "packageManager": "npm@11.11.0",
   "dependencies": {
