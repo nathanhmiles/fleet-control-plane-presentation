@@ -114,9 +114,9 @@ export const techSections: TechItem[] = [
   {
     title: 'Design system & components',
     decision:
-      'Short term: Angular Material, Long term: Angular CDK primitives + custom CSS design system',
+      'Angular Material + custom CSS design system targeting technical audience',
     rationale:
-      'Angular Material provides a suite of ready-made components with all accessibility and interaction behaviours built in, along with the familiar Google design system. Quickly transition to a component library built on top of the Angular CDK, styled entirely with CSS custom properties for theming.',
+      'Angular Material provides a suite of ready-made components with all accessibility and interaction behaviours built in, along with the familiar Google design system that will ultimately be overwritten with a more information-dense custom design system.',
     alt: 'PrimeNG',
   },
   {
