@@ -52,9 +52,9 @@ export const epics: Epic[] = [
     title: 'Deployment Operations',
     features: [
       'Select one or many targets (individual devices, groups, or ad-hoc selections)',
-      'Choose operation: fresh install, re-image, rollback to a named version',
-      'Pre-flight compatibility check: hardware/OS requirements, storage, connectivity',
-      'Review and confirm: show a diff of what will change before committing',
+      'Choose operation: fresh install, re-image, rollback',
+      'Pre-deploy compatibility checks: validate hardware requirements, storage, connection',
+      'Dry-run and clear confirmation request',
       'Schedule deployment for a future maintenance window',
     ],
   },
@@ -194,10 +194,10 @@ export const phases: Phase[] = [
     weeks: 'Weeks 9–11',
     why: 'Trust-building features',
     items: [
-      'Pre-flight compatibility check panel',
+      'Pre-deploy validation panel',
       'Rollback operation: version picker',
-      'Audit log: filterable high-density data table',
-      'RBAC: CanActivate guards',
+      'Audit log: filterable, high-performance, high-density data table',
+      'Role Based Access Control: route guards',
     ],
   },
   {
@@ -216,7 +216,8 @@ export const phases: Phase[] = [
 
 export const risks: Risk[] = [
   {
-    severity: 'high',
+    impact: 'high',
+    likelihood: 'high',
     category: 'Technical',
     risk: 'Event Ordering/State Consistency',
     detail:
@@ -225,16 +226,8 @@ export const risks: Risk[] = [
       'Use sequence/version IDs per deployment stream, idempotent reducers, and periodic backend reconciliation against frontend state.',
   },
   {
-    severity: 'high',
-    category: 'Technical',
-    risk: 'UI responsiveness degrades under large fleet sizes or prolonged sessions.',
-    detail:
-      'Long-lived operator sessions combined with high-frequency realtime updates may cause memory leaks, excessive rerendering, or browser instability.',
-    mitigation:
-      'High performance change detection strategy using Signals and OnPush. Assess risk early using large-scale mock datasets',
-  },
-  {
-    severity: 'high',
+    impact: 'high',
+    likelihood: 'high',
     category: 'Technical',
     risk: 'WebSocket resilience in long-running operator sessions',
     detail:
@@ -243,7 +236,18 @@ export const risks: Risk[] = [
       'Build reconnect and /sync paths in phase 2. Write chaos tests that kill the socket mid-deployment.',
   },
   {
-    severity: 'medium',
+    impact: 'high',
+    likelihood: 'medium',
+    category: 'Technical',
+    risk: 'UI responsiveness degrades under large fleet sizes or prolonged sessions.',
+    detail:
+      'Long-lived operator sessions combined with high-frequency realtime updates may cause memory leaks, excessive rerendering, or browser instability.',
+    mitigation:
+      'High performance change detection strategy using Signals and OnPush. Assess risk early using large-scale mock datasets',
+  },
+  {
+    impact: 'high',
+    likelihood: 'medium',
     category: 'Product',
     risk: 'Experienced operators reject the UI because workflows feel slower or less trustworthy than CLI tooling.',
     detail:
@@ -252,15 +256,18 @@ export const risks: Risk[] = [
       'Prioritise technical power-user features. Short feedback loops to address missing functionality quickly. Optimise for keyboard efficiency, information density, and transparent system state.',
   },
   {
-    severity: 'medium',
+    impact: 'medium',
+    likelihood: 'medium',
     category: 'Product',
     risk: 'Backend API not ready when frontend needs it',
-    detail: 'Without an agreed contract, frontend development is blocked by work on real endpoints.',
+    detail:
+      'Without an agreed contract, frontend development is blocked by work on real endpoints.',
     mitigation:
       'Agree OpenAPI specs early. MSW handlers are written against the spec from day one.',
   },
   {
-    severity: 'low',
+    impact: 'low',
+    likelihood: 'medium',
     category: 'Team',
     risk: 'Rapidly evolving Angular reactive APIs introduce migration or consistency overhead.',
     detail:
