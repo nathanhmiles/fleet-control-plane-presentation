@@ -19,10 +19,10 @@ export const epics: Epic[] = [
     id: 'E1',
     title: 'Platform Foundation',
     features: [
-      'Auth via SSO / OIDC with role-based access (read-only, operator, admin)',
-      'Global navigation, deep-linking, and browser history integration',
-      'Design system: component library, tokens, dark mode, accessible by default',
-      'Observability: client-side error tracking and performance monitoring',
+      'Role-based access control and authentication',
+      'Client-side error tracking and performance monitoring',
+      'Accessible design system with dark mode support',
+      'App routing with deep-linked routes and browser history support',
     ],
   },
   {
@@ -155,7 +155,7 @@ export const phases: Phase[] = [
     why: 'Unblock everything — no demo is possible without this',
     items: [
       'Angular CLI scaffold: standalone components, TypeScript configuration, strict mode',
-      'Angular Material installed: configure default theme as a structural baseline',
+      'Angular Material installed: configure default theme as a baseline',
       'Angular Router: shell route, lazy feature routes, auth guard',
       'Mock Service Worker set up with mock backend response data; HTTP auth interceptor',
       'GitHub Actions: ng lint → ng test → ng build → Playwright smoke',
@@ -168,10 +168,9 @@ export const phases: Phase[] = [
     weeks: 'Weeks 3–5',
     why: 'Something real to show stakeholders',
     items: [
-      'Design review and global Material density configuration: override component paddings and layouts to force a high-density, utility-first style matching operator expectations',
       'Target inventory: MatTable + virtual scroll with sort, filter, search',
-      'Target detail side panel (MatSidenav)',
       'Image catalogue list with version history',
+      'Target detail side panel (MatSidenav)',
       'Deployment wizard (MatStepper): target selection → confirm',
       'Playwright E2E test for core journey',
     ],
@@ -180,11 +179,11 @@ export const phases: Phase[] = [
     phase: 2,
     title: 'Real-time Core',
     weeks: 'Weeks 6–8',
-    why: "This is the product's hardest capability - ship it on top of Material so UI risk and real-time risk don't land at the same time",
+    why: "The product's most difficult piece of functionality",
     items: [
       'WebSocketService in core/ using RxJS webSocket()',
       'toSignal() bridges real-time data streams directly into the reactive template layer',
-      'Missed-event reconciliation on reconnect',
+      'Reconnection and resync logic using RxJs operators',
       'Progress view: per-target stage bar, logs',
     ],
   },
@@ -233,7 +232,7 @@ export const risks: Risk[] = [
     detail:
       'A dropped connection mid-deployment creates operator anxiety and risk of missed critical events.',
     mitigation:
-      'Build reconnect and /sync paths in phase 2. Write chaos tests that kill the socket mid-deployment.',
+      'Build reconnect and resync logic in phase 2. Write chaos tests that kill the socket mid-deployment.',
   },
   {
     impact: 'high',
