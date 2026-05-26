@@ -29,10 +29,9 @@ export const epics: Epic[] = [
     id: 'E2',
     title: 'Image Management',
     features: [
-      'Browse image catalogue with version history, changelogs, and metadata',
-      'Define image composition: base OS, package sets, config layers, secrets refs',
-      'Publish a new image version with validation and signing status',
-      'Compare two image versions diff-style before promoting',
+      'Image catalogue with version history, changelogs, and metadata',
+      'CRUD images',
+      'Comparison of two different image versions',
       'Tag and promote images across environments (dev → staging → prod)',
     ],
   },
@@ -40,9 +39,8 @@ export const epics: Epic[] = [
     id: 'E3',
     title: 'Target Inventory',
     features: [
-      'Inventory view: filterable/sortable table of all targets (devices, VMs, groups)',
-      'Per-target detail: current image, version, health metrics, last deployment',
-      'Status indicators: online/offline/degraded/unknown with staleness cues',
+      'Inventory view: filterable/sortable table of all targets',
+      'Per-target detail: current image, version, last deployment, connection status',
       'Hardware groups: create, edit, nest; assign targets to groups',
       'Search and multi-select across device types and groups',
     ],
@@ -54,7 +52,7 @@ export const epics: Epic[] = [
       'Select one or many targets (individual devices, groups, or ad-hoc selections)',
       'Choose operation: fresh install, re-image, rollback',
       'Pre-deploy compatibility checks: validate hardware requirements, storage, connection',
-      'Dry-run and clear confirmation request',
+      'Dry-run and confirmation request',
       'Schedule deployment for a future maintenance window',
     ],
   },
@@ -80,6 +78,75 @@ export const epics: Epic[] = [
     ],
   },
 ];
+
+
+export const phases: Phase[] = [
+  {
+    phase: 0,
+    title: 'Foundation',
+    weeks: 'Weeks 1–2',
+    why: 'Unblock everything — no demo is possible without this',
+    items: [
+      'Angular CLI scaffold: standalone components, TypeScript configuration, strict mode',
+      'Angular Material installed: configure default theme as a baseline',
+      'Angular Router: shell route, lazy feature routes, auth guard',
+      'Mock Service Worker set up with mock backend response data; HTTP auth interceptor',
+      'GitHub Actions: ng lint → ng test → ng build → Playwright smoke',
+      'APP_INITIALIZER fetches runtime feature-flag config',
+    ],
+  },
+  {
+    phase: 1,
+    title: 'Demo of core functionality',
+    weeks: 'Weeks 3–5',
+    why: 'Something real to show stakeholders',
+    items: [
+      'Target inventory: MatTable + virtual scroll with sort, filter, search',
+      'Image catalogue list with version history',
+      'Deployment wizard (MatStepper): target selection → confirm',
+      'Target detail side panel (MatSidenav)',
+      'Playwright E2E test for core journey',
+    ],
+  },
+  {
+    phase: 2,
+    title: 'Real-time Core',
+    weeks: 'Weeks 6–8',
+    why: "The product's most difficult piece of functionality",
+    items: [
+      'WebSocketService in core/ using RxJS webSocket()',
+      'toSignal() bridges real-time data streams directly into the reactive template layer',
+      'Reconnection and resync logic using RxJs operators',
+      'Progress view: per-target stage bar, logs',
+    ],
+  },
+  {
+    phase: 3,
+    title: 'Safety & Compliance',
+    weeks: 'Weeks 9–11',
+    why: 'Trust-building features',
+    items: [
+      'Pre-deploy validation panel',
+      'Rollback operation: version picker',
+      'Audit log: filterable, high-performance, high-density data table',
+      'Role Based Access Control: route guards',
+    ],
+  },
+  {
+    phase: 4,
+    title: 'Scale & Polish',
+    weeks: 'Weeks 12–14',
+    why: 'Optimise performance and eliminate framework runtime overhead',
+    items: [
+      'Schedule deployment for future maintenance window',
+      'Drop Zone.js dependency entirely and transition application configuration to native Zoneless change detection, leveraging the Signal codebase built from Phase 0',
+      'Performance: profile and benchmark UI responsiveness with simulated 10k-target active streaming datasets',
+      'Keyboard shortcuts and command palette for rapid, mouse-free operator workflows',
+      'Accessibility audit and full keyboard navigation compliance fixes',
+    ],
+  },
+];
+
 
 export const techSections: TechItem[] = [
   {
@@ -145,72 +212,6 @@ export const dependencies: Dependency[] = [
   { label: 'NgRx Signal Store', role: 'State Management', url: 'https://ngrx.io/guide/signals' },
   { label: 'MSW', role: 'API mocking', url: 'https://mswjs.io' },
   { label: 'Playwright', role: 'E2E tests', url: 'https://playwright.dev' },
-];
-
-export const phases: Phase[] = [
-  {
-    phase: 0,
-    title: 'Foundation',
-    weeks: 'Weeks 1–2',
-    why: 'Unblock everything — no demo is possible without this',
-    items: [
-      'Angular CLI scaffold: standalone components, TypeScript configuration, strict mode',
-      'Angular Material installed: configure default theme as a baseline',
-      'Angular Router: shell route, lazy feature routes, auth guard',
-      'Mock Service Worker set up with mock backend response data; HTTP auth interceptor',
-      'GitHub Actions: ng lint → ng test → ng build → Playwright smoke',
-      'APP_INITIALIZER fetches runtime feature-flag config',
-    ],
-  },
-  {
-    phase: 1,
-    title: 'Demo of core functionality',
-    weeks: 'Weeks 3–5',
-    why: 'Something real to show stakeholders',
-    items: [
-      'Target inventory: MatTable + virtual scroll with sort, filter, search',
-      'Image catalogue list with version history',
-      'Target detail side panel (MatSidenav)',
-      'Deployment wizard (MatStepper): target selection → confirm',
-      'Playwright E2E test for core journey',
-    ],
-  },
-  {
-    phase: 2,
-    title: 'Real-time Core',
-    weeks: 'Weeks 6–8',
-    why: "The product's most difficult piece of functionality",
-    items: [
-      'WebSocketService in core/ using RxJS webSocket()',
-      'toSignal() bridges real-time data streams directly into the reactive template layer',
-      'Reconnection and resync logic using RxJs operators',
-      'Progress view: per-target stage bar, logs',
-    ],
-  },
-  {
-    phase: 3,
-    title: 'Safety & Compliance',
-    weeks: 'Weeks 9–11',
-    why: 'Trust-building features',
-    items: [
-      'Pre-deploy validation panel',
-      'Rollback operation: version picker',
-      'Audit log: filterable, high-performance, high-density data table',
-      'Role Based Access Control: route guards',
-    ],
-  },
-  {
-    phase: 4,
-    title: 'Scale & Polish',
-    weeks: 'Weeks 12–14',
-    why: 'Optimise performance and eliminate framework runtime overhead',
-    items: [
-      'Drop Zone.js dependency entirely and transition application configuration to native Zoneless change detection, leveraging the Signal codebase built from Phase 0',
-      'Performance: profile and benchmark UI responsiveness with simulated 10k-target active streaming datasets',
-      'Keyboard shortcuts and command palette for rapid, mouse-free operator workflows',
-      'Accessibility audit and full keyboard navigation compliance fixes',
-    ],
-  },
 ];
 
 export const risks: Risk[] = [
