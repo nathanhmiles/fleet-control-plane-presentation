@@ -1,6 +1,7 @@
 <div class="card p-3">
   <div class="flex items-center gap-2 mb-2">
-    <span class="badge severity-{{ risk().severity }}">{{ risk().severity | titlecase }}</span>
+    <small>Impact: </small><span class="badge severity-{{ risk().impact }}">{{ risk().impact | titlecase }}</span>
+    <small>Likelihood: </small><span class="badge severity-{{ risk().likelihood }}">{{ risk().likelihood | titlecase }}</span>
     <span class="badge text-muted border-muted">{{ risk().category }}</span>
     <strong class="flex-1">{{ risk().risk }}</strong>
   </div>

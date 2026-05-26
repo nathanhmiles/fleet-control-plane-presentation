@@ -7,7 +7,8 @@ export type Epic = {
 export interface Risk {
   risk: string;
   detail: string;
-  severity: 'high' | 'medium' | 'low';
+  impact: 'high' | 'medium' | 'low';
+  likelihood: 'high' | 'medium' | 'low';
   category: 'Technical' | 'Product' | 'Team';
   mitigation: string;
 }
