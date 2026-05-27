@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
-import { Epic } from '../../data-access/types/content.types';
+import { Epic } from '../../../../core/data-access/types/content.types';
 
 @Component({
   selector: 'app-epic-card',

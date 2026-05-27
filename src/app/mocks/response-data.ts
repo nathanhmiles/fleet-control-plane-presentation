@@ -5,7 +5,7 @@ import {
   Risk,
   Section,
   TechItem,
-} from '../data-access/types/content.types';
+} from '../core/data-access/types/content.types';
 
 export const sections: Section[] = [
   { id: 'epics', label: 'Features & Epics' },

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { EpicCardComponent } from '../../components/epic-card/epic-card.component';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ContentService } from '../../data-access/services/content.service';
+import { ContentService } from '../../../../core/data-access/services/content.service';
 
 
 @Component({

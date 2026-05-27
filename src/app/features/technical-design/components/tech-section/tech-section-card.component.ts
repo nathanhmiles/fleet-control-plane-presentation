@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
-import { TechItem } from '../../data-access/types/content.types';
+import { TechItem } from '../../../../core/data-access/types/content.types';
 
 @Component({
   selector: 'app-tech-section',

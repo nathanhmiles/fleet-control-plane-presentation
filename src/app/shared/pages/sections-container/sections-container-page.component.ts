@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ContentService } from '../../data-access/services/content.service';
+import { ContentService } from '../../../core/data-access/services/content.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { SectionButtonComponent } from '../../components/section-button/section-button.component';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { filter, map, startWith, tap } from 'rxjs';
+import { filter, map } from 'rxjs';
 
 @Component({
   selector: 'app-sections-container',

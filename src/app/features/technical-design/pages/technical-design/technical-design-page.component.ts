@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { TechSectionCardComponent } from '../../components/tech-section/tech-section-card.component';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ContentService } from '../../data-access/services/content.service';
+import { ContentService } from '../../../../core/data-access/services/content.service';
 
 
 @Component({

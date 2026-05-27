@@ -9,7 +9,7 @@ import {
   risks,
   sections,
   techSections,
-} from '../../mocks/response-data';
+} from '../../../mocks/response-data';
 
 @Injectable({ providedIn: 'root' })
 export class ContentApiService {

@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
-import { Section } from '../../data-access/types/content.types';
+import { Section } from '../../../core/data-access/types/content.types';
 
 @Component({
   selector: 'app-section-button',

@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
-import { Risk } from '../../data-access/types/content.types';
+import { Risk } from '../../../../core/data-access/types/content.types';
 import { TitleCasePipe } from '@angular/common';
 
 @Component({

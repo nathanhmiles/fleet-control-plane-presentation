@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
-import { Phase } from '../../data-access/types/content.types';
+import { Phase } from '../../../../core/data-access/types/content.types';
 
 @Component({
   selector: 'app-delivery-phase',
