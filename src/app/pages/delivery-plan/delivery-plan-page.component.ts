@@ -9,7 +9,7 @@ import { ContentService } from '../../data-access/services/content.service';
   template: `
     <div>
       <p class="text-muted mb-4">
-        {{ PHASES().length }} phases over fourteen weeks. Phase 1 ends with something you can demo to a real
+        {{ PHASES().length }} phases over fourteen weeks. Phase 1 ends with something that can be demonstrated to a real
         operator.
       </p>
 
