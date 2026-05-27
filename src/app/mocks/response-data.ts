@@ -197,7 +197,7 @@ export const techSections: TechItem[] = [
     title: 'Build & deployment',
     decision: 'Angular CLI (esbuild application builder) → Docker (nginx) → GitHub Actions',
     rationale:
-      "The Angular CLI's application builder produces a tree-shaken, code-split static artefact that nginx serves from a Docker container. Trivially portable to on-premise environments.",
+      "The Angular CLI's application builder produces a tree-shaken, code-split static artefact that nginx serves from a Docker container.",
     alt: 'Vercel/Netlify, webpack builder',
   },
 ];
